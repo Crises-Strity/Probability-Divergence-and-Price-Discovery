@@ -1,0 +1,16 @@
+data/
+paper/
+docs/
+dissertation/
+result/
+AGENTS.md
+.DS_Store
+__pycache__/
+*.py[cod]
+*.csv
+*.parquet
+*.json
+*.zip
+.venv/
+venv/
+.ipynb_checkpoints/
