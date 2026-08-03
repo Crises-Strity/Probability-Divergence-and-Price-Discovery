@@ -77,7 +77,8 @@
     "search_terms": [
       "solana",
       "sol price",
-      "SOL price"
+      "solana price",
+      "what price will solana be"
     ],
     "resolved_before_utc": "2026-08-03T23:59:59Z",
     "lower_time_bound": null
@@ -88,8 +89,8 @@
     "result_dir": "result/P3_sol_extension",
     "decision_log": "docs/decision_logs/P3_SOL_FEASIBILITY_DECISION.md"
   },
-  "git_commit": "f546f6a012109641957786de5f69927155b9a497",
-  "data_snapshot_utc": "2026-08-03T16:47:14Z",
+  "git_commit": "1edbcc353195ba674590280932981210da79a6f2",
+  "data_snapshot_utc": "2026-08-03T17:21:12Z",
   "software_versions": {
     "python": "3.11.2",
     "requests": "2.32.5",

@@ -61,3 +61,5 @@ data/processed/**/*.json
 data/processed/p3_sol/*
 !data/processed/p3_sol/p3_sol_run_config.json
 !data/processed/p3_sol/deribit_contract_spec.json
+!data/processed/p3_sol/polymarket_feasibility_metadata.json
+!data/processed/p3_sol/deribit_feasibility_metadata.json

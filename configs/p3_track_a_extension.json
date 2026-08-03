@@ -66,7 +66,7 @@
     "deribit_api": "https://www.deribit.com/api/v2"
   },
   "discovery": {
-    "search_terms": ["solana", "sol price", "SOL price"],
+    "search_terms": ["solana", "sol price", "solana price", "what price will solana be"],
     "resolved_before_utc": "2026-08-03T23:59:59Z",
     "lower_time_bound": null
   },

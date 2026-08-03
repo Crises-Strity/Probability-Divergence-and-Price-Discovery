@@ -89,3 +89,35 @@ The extension is not yet authorized for estimation. The remaining blockers are f
 
 Build the complete SOL event/cell inventory and actual Deribit expiry-match table, then probe strike grids only for those candidate expiries. Issue the formal `PASS`, `LIMITED PASS`, or `FAIL` decision before implementing the option-pricing adapter or inspecting divergence estimates.
 
+## Formal inventory checkpoint — 2026-08-03
+
+The reproducible inventory pipeline subsequently confirmed:
+
+```text
+discovered events: 120
+resolved complete terminal partitions with verified rules: 44
+distinct Polymarket settlement timestamps: 44
+candidate cell rows: 424
+duplicate event, market, token, or event/cell keys: 0
+missing YES token IDs: 0
+finite bucket width for every candidate: USD 10
+```
+
+Rules text identifies all 44 candidate events as the Binance SOL/USDT 1-minute close at noon ET. Converting the written rules with the `America/New_York` timezone gives 22 settlements at 16:00 UTC and 22 at 17:00 UTC. This corrected one event whose API `endDate` was four hours earlier than its written settlement rule; the original `event_end_time` remains retained for audit.
+
+Verified archived Deribit metadata matching produced:
+
+```text
+candidate events matched: 44 / 44
+distinct actual Deribit expiries: 41
+mapping quality exact: 39
+mapping quality close: 3
+mapping quality loose: 2
+mapping quality unmappable: 0
+verified SOL linear-USDC units: 44 / 44
+metadata API requests: 150
+```
+
+Signed PM-settlement-minus-Deribit-expiry gaps were concentrated at `+8h` and `+9h`; two events had `+57h` loose matches. No single Deribit expiry dominates the candidate set: the largest supplies 3 of 44 events.
+
+This clears the event-definition, candidate-count, expiry-metadata, contract-unit, and preliminary concentration checks. The formal feasibility decision remains unwritten because the historical OHLC/full-strike freshness gate has not yet been applied across the matched expiry sample. No estimator work is authorized at this checkpoint.

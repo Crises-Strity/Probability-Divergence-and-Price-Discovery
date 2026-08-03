@@ -1,0 +1,28 @@
+{
+  "data_snapshot_utc": "2026-08-03T17:34:03.251665+00:00",
+  "source_endpoint": "https://www.deribit.com/api/v2/public/get_instrument",
+  "parameters": {
+    "max_abs_days": 3,
+    "representative_strikes_per_event": 3,
+    "option_sides": [
+      "call",
+      "put"
+    ]
+  },
+  "row_counts": {
+    "candidate_events": 44,
+    "matched_events": 44,
+    "matched_expiries": 41,
+    "exact_or_close_events": 42,
+    "loose_events": 2,
+    "unmatched_or_unmappable_events": 0,
+    "api_requests": 150,
+    "instrument_rows": 44
+  },
+  "contract_units_verified_for_all_matches": true,
+  "outputs": {
+    "expiry_match": "data/processed/p3_sol/deribit_expiry_match.parquet",
+    "instrument_inventory": "data/processed/p3_sol/deribit_instrument_inventory.parquet"
+  },
+  "remaining_gate": "Historical OHLC and full cross-strike freshness must pass before estimator implementation."
+}

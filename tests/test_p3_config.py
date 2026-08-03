@@ -50,6 +50,13 @@ def test_p3_config_freezes_candidate_and_final_gates() -> None:
     }
 
 
+def test_p3_discovery_includes_terminal_distribution_search_phrase() -> None:
+    config = load_config(CONFIG_PATH)
+
+    assert "what price will solana be" in config["discovery"]["search_terms"]
+    assert "solana price" in config["discovery"]["search_terms"]
+
+
 def test_p3_config_does_not_activate_coin_rmse_for_sol() -> None:
     config = load_config(CONFIG_PATH)
 
@@ -87,4 +94,3 @@ def test_run_snapshot_records_provenance_without_mutating_source() -> None:
     assert snapshot["deterministic"] is True
     assert snapshot["p3_feasibility_overrides"]["primary_candidate"] == "SOL"
     assert snapshot["output_paths"]["processed_dir"] == "data/processed/p3_sol"
-
