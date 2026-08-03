@@ -55,3 +55,8 @@ data/processed/**/*.json
 !data/processed/panels/trackB_lead_lag_panel_metadata.json
 !data/processed/panels/trackB_lead_lag_panel_metadata_6h.json
 !data/processed/panels/trackB_lead_lag_diagnostics_summary.json
+
+# Dissertation handoff workspace
+dissertation/inbox/*
+!dissertation/inbox/.gitkeep
+!dissertation/releases/**/source.zip

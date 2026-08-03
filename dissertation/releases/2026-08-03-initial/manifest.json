@@ -1,0 +1,29 @@
+{
+  "release_id": "2026-08-03-initial",
+  "authority": "overleaf",
+  "dissertation_repository": "Crises-Strity/UCL-Final-Dissertation",
+  "dissertation_commit": "d05b6c86b8ced810ac47d9ed96bb73b6eba7db36",
+  "export_timezone": "Europe/London",
+  "compiler": "LuaTeX-1.21.0",
+  "pdf_pages": 56,
+  "compile_log_evidence": "screenshots_only",
+  "review_status": "pending_initial_review",
+  "artifacts": {
+    "source.zip": {
+      "bytes": 106488,
+      "sha256": "b2a0601a08b84c44564732ef866ef689269dd98e476948afc0b2644019bc80c3"
+    },
+    "dissertation.pdf": {
+      "bytes": 511402,
+      "sha256": "5ce76c774d7bc4dbf7585387d4d25ae78011b9f9e1297607a4a59d012788b8c9"
+    },
+    "logs/compile-log-01.png": {
+      "bytes": 432583,
+      "sha256": "b4a0b22f786c5498a74f87df9da8dc7bcb9f35a4bab197dc30ae1cb0649411fd"
+    },
+    "logs/compile-log-02.png": {
+      "bytes": 358441,
+      "sha256": "d9ebc29af662ee71ac716fdecd05018943d9bce25e8108dac787f03fbac56c0f"
+    }
+  }
+}
