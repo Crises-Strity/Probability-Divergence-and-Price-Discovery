@@ -9,7 +9,7 @@
   "compiler": "LuaTeX-1.21.0",
   "pdf_pages": 56,
   "compile_log_evidence": "screenshots_only",
-  "review_status": "pending_initial_review",
+  "review_status": "initial_review_complete",
   "source_comparison": {
     "status": "one_file_mismatch",
     "path": "chapter/ch7_limitations.tex",
