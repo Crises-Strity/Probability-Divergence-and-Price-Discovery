@@ -1,0 +1,79 @@
+{
+  "config_version": 1,
+  "baseline_source": {
+    "project": "P1 Track A frozen BTC/ETH analysis",
+    "implementation": "scripts/P1_pipeline/build_trackA_deribit_rnd_panel.py",
+    "interpretation": "docs/decision_logs/P1_EMPIRICAL_FREEZE.md",
+    "frozen_commit": "f546f6a012109641957786de5f69927155b9a497"
+  },
+  "inherited_track_a_parameters": {
+    "resolution": "1D",
+    "smooth_weight": 0.1,
+    "minimum_fresh_strikes": 8,
+    "maximum_stale_bar_share": 0.3,
+    "state_grid_lower_multiplier": 0.5,
+    "state_grid_upper_multiplier": 1.5,
+    "open_tail_midpoint_widths": 0.5,
+    "probability_sum_tolerance": 1e-06,
+    "minimum_probability_tolerance": 1e-10,
+    "forward_relative_error_tolerance": 0.05
+  },
+  "robustness_parameters": {
+    "smooth_weights": [0.0, 0.05, 0.1, 0.2],
+    "open_tail_midpoint_widths": [0.5, 1.0],
+    "state_grid_edge_mass_diagnostic": true
+  },
+  "p3_feasibility_overrides": {
+    "primary_candidate": "SOL",
+    "backup_candidate": "XRP",
+    "candidate_event_minimum_cells": 4,
+    "candidate_requires_both_open_tails": true,
+    "candidate_panel_gates": {
+      "pass_min_events": 10,
+      "pass_min_expiries": 3,
+      "limited_pass_min_events": 5,
+      "limited_pass_min_expiries": 2
+    },
+    "final_panel_gates": {
+      "pass_min_event_days": 30,
+      "pass_min_events": 10,
+      "pass_min_expiries": 3,
+      "limited_pass_min_event_days": 15,
+      "limited_pass_min_events": 5,
+      "limited_pass_min_expiries": 2,
+      "maximum_single_event_share": 0.25
+    },
+    "backup_activation_rules": [
+      "SOL fails for an asset-specific Polymarket coverage reason and feasibility-audit time remains",
+      "SOL passes and XRP can reuse the validated linear-USDC adapter without new estimator architecture"
+    ],
+    "small_probe_limits": {
+      "polymarket_max_pages_per_term": 2,
+      "deribit_max_ohlc_instruments": 6,
+      "download_full_price_histories": false,
+      "estimate_risk_neutral_distribution": false
+    }
+  },
+  "contract_fit_tolerance": {
+    "status": "deferred",
+    "unit": null,
+    "value": null,
+    "activation_rule": "Derive in USD/USDC or relative-underlying units after official linear-USDC contract verification and before inspecting divergence estimates"
+  },
+  "source_endpoints": {
+    "polymarket_gamma": "https://gamma-api.polymarket.com",
+    "polymarket_clob": "https://clob.polymarket.com",
+    "deribit_api": "https://www.deribit.com/api/v2"
+  },
+  "discovery": {
+    "search_terms": ["solana", "sol price", "SOL price"],
+    "resolved_before_utc": "2026-08-03T23:59:59Z",
+    "lower_time_bound": null
+  },
+  "output_paths": {
+    "raw_dir": "data/raw/p3_sol",
+    "processed_dir": "data/processed/p3_sol",
+    "result_dir": "result/P3_sol_extension",
+    "decision_log": "docs/decision_logs/P3_SOL_FEASIBILITY_DECISION.md"
+  }
+}
