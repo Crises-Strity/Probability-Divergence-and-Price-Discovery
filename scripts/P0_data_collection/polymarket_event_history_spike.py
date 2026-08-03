@@ -30,7 +30,14 @@ import pandas as pd
 import requests
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+def find_project_root() -> Path:
+    for parent in Path(__file__).resolve().parents:
+        if (parent / "AGENTS.md").exists() and (parent / ".git").exists():
+            return parent
+    raise RuntimeError("Could not locate project root.")
+
+
+PROJECT_ROOT = find_project_root()
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 RAW_EVENTS = PROJECT_ROOT / "data" / "raw" / "polymarket" / "polymarket_public_search_events.json"
@@ -61,7 +68,7 @@ def market_cell(market: dict[str, Any]) -> dict[str, Any]:
     yes_token_id = token_ids[0] if token_ids else None
 
     # Reuse structured parsing from the inventory script to avoid divergent rules.
-    from scripts.build_polymarket_inventory import classify_question
+    from scripts.P0_data_collection.build_polymarket_inventory import classify_question
 
     parsed = classify_question(question)
     if parsed is None:

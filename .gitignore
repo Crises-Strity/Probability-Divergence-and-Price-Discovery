@@ -1,16 +1,57 @@
-data/
-paper/
-docs/
-dissertation/
-result/
-AGENTS.md
+# macOS and editor state
 .DS_Store
+**/.DS_Store
+.vscode/
+.idea/
+
+# Python caches and environments
 __pycache__/
+**/__pycache__/
 *.py[cod]
-*.csv
-*.parquet
-*.json
-*.zip
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
 .venv/
 venv/
-.ipynb_checkpoints/
+build/
+dist/
+*.egg-info/
+
+# Archives and local research material
+*.zip
+meeting_materials/
+result/
+dissertation/literature_review/*.pdf
+
+# Raw and bulk processed data
+data/raw/
+data/processed/**/*.csv
+data/processed/**/*.parquet
+data/processed/**/*.json
+
+# Compact frozen inputs required by the P2 freeze runner
+!data/processed/panels/trackA_event_day_quality.parquet
+!data/processed/panels/trackA_event_day_divergence.parquet
+!data/processed/panels/daily_distribution_comparison.parquet
+!data/processed/panels/trackA_event_day_divergence_smooth005.parquet
+!data/processed/panels/trackA_event_day_divergence_smooth02.parquet
+!data/processed/deribit/deribit_curve_fits.parquet
+!data/processed/deribit/deribit_state_price_grid.parquet
+!data/processed/deribit/deribit_bar_quality_60.parquet
+!data/processed/polymarket/event_universe.parquet
+!data/processed/polymarket/event_cells.parquet
+!data/processed/polymarket/polymarket_distribution_hourly.parquet
+
+# Metadata required by the frozen result set
+!data/processed/frozen_input_manifest.json
+!data/processed/panels/trackA_diagnostics_summary.json
+!data/processed/panels/trackA_regression_diagnostics_summary.json
+!data/processed/panels/reference_basis_audit_metadata.json
+!data/processed/panels/trackB_kstar_metadata.json
+!data/processed/panels/trackB_pm_survival_metadata.json
+!data/processed/panels/trackB_deribit_survival_metadata.json
+!data/processed/panels/trackB_deribit_survival_metadata_6h.json
+!data/processed/panels/trackB_lead_lag_panel_metadata.json
+!data/processed/panels/trackB_lead_lag_panel_metadata_6h.json
+!data/processed/panels/trackB_lead_lag_diagnostics_summary.json

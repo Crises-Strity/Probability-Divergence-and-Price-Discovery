@@ -29,7 +29,14 @@ import pandas as pd
 import requests
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+def find_project_root() -> Path:
+    for parent in Path(__file__).resolve().parents:
+        if (parent / "AGENTS.md").exists() and (parent / ".git").exists():
+            return parent
+    raise RuntimeError("Could not locate project root.")
+
+
+PROJECT_ROOT = find_project_root()
 POLY_EVENT_QUALITY = PROJECT_ROOT / "data" / "processed" / "polymarket" / "event_distribution_quality.csv"
 OUT_DIR = PROJECT_ROOT / "data" / "processed" / "deribit"
 

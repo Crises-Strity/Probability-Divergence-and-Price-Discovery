@@ -1,0 +1,25 @@
+[project]
+name = "probability-divergence-price-discovery"
+version = "0.1.0"
+description = "Frozen empirical pipeline for Polymarket-Deribit probability divergence and price discovery"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "jinja2==3.1.6",
+  "matplotlib==3.10.7",
+  "numpy==2.2.6",
+  "pandas==2.3.3",
+  "pyarrow==23.0.0",
+  "python-dateutil==2.9.0.post0",
+  "requests==2.32.5",
+  "scipy==1.15.3",
+  "statsmodels==0.14.5",
+]
+
+[dependency-groups]
+dev = [
+  "pytest==9.0.2",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
