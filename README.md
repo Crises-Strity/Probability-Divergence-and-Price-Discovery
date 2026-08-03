@@ -1,8 +1,8 @@
 # Probability Divergence and Price Discovery
 
-This repository contains the code and research materials for a UCL MSc FinTech dissertation project on cross-market probability pricing in crypto markets.
+This repository contains the reproducible empirical pipeline and frozen research outputs for a UCL MSc FinTech dissertation project on cross-market probability pricing in crypto markets.
 
-Working topic:
+Project title:
 
 ```text
 Probability Divergence and Price Discovery between Polymarket BTC/ETH Price Events and Deribit Crypto Options
@@ -67,7 +67,6 @@ Which market incorporates information first?
 ├── data/
 │   ├── raw/                  # raw API snapshots and downloaded market data
 │   └── processed/            # cleaned panels, diagnostics, and metadata
-├── dissertation/             # dissertation chapter drafts and bibliography
 ├── docs/
 │   ├── roadmap/              # topic outline and project roadmap
 │   ├── specs/                # pipeline specifications and implementation notes
@@ -137,8 +136,10 @@ Key scripts:
 
 ```text
 scripts/P2_diagnostics/build_reference_basis_audit.py
+scripts/P2_diagnostics/build_frozen_input_manifest.py
 scripts/P2_diagnostics/build_p1_table_provenance.py
 scripts/P2_diagnostics/run_p1_freeze.py
+scripts/P2_diagnostics/verify_p2_freeze.py
 ```
 
 ## Data Sources
@@ -156,6 +157,19 @@ Known data constraints:
 - Historical Deribit order books for expired options are not straightforwardly available through the tested public endpoints.
 - Option OHLC data may be based on last trades, so cross-strike prices are not guaranteed to be synchronous.
 - Polymarket event prices and Deribit risk-neutral probabilities are related but not identical probability concepts.
+
+## Frozen Empirical Snapshot
+
+The current P2 freeze is generated from the tracked compact inputs and contains:
+
+- Track A: 294 matched event-days across 61 events, with 3,114 comparison-cell rows;
+- Track B: 1,121 jointly informative six-hour rows;
+- Track B lead-lag regressions: 703 rows across 77 events;
+- reference-basis audit: 124 events;
+- paper-facing outputs: 30 CSV tables, matching LaTeX tables, and 8 PDF figures;
+- automated checks: 17 tests plus a strict freeze verifier.
+
+These counts are regression-tested. They describe the frozen sample rather than targets to be achieved by changing filters.
 
 ## Environment
 
@@ -192,7 +206,11 @@ Rebuild the frozen paper-facing outputs from the tracked compact inputs with:
 
 ```bash
 uv run python scripts/P2_diagnostics/run_p1_freeze.py --include-track-b
+uv run python scripts/P2_diagnostics/verify_p2_freeze.py
+uv run pytest -q
 ```
+
+The freeze runner regenerates Track A and Track B diagnostics, the reference-basis audit, final tables and figures, and table-level provenance. The verifier rejects missing outputs, obsolete script paths, incorrect row counts, and unexpected changes to the frozen sample.
 
 ## Output Policy
 
@@ -216,4 +234,6 @@ Research-output discipline:
 
 ## Current Status
 
-The project is organized around the two-track design above. Initial API exploration and pipeline scripts exist, and the repository structure has been separated into P0 data collection, P1 main pipeline, and P2 diagnostics. The next engineering priority is to keep the pipeline reproducible as the dissertation specification is narrowed.
+P0 data feasibility, the P1 empirical pipeline, and the P2 engineering freeze are complete for the current BTC/ETH specification. The repository now includes a Python 3.11 lockfile, compact reproducibility inputs, table-level provenance, frozen-output regression tests, a reference-basis audit, and one-command regeneration of the paper-facing results.
+
+The frozen results should still be interpreted conservatively. Cross-venue probability differences are not direct arbitrage estimates, clustered p-values do not establish causal price discovery, and settlement-reference mismatches and non-synchronous option OHLC observations remain material limitations.
