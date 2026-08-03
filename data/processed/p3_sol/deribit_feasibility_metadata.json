@@ -24,5 +24,48 @@
     "expiry_match": "data/processed/p3_sol/deribit_expiry_match.parquet",
     "instrument_inventory": "data/processed/p3_sol/deribit_instrument_inventory.parquet"
   },
-  "remaining_gate": "Historical OHLC and full cross-strike freshness must pass before estimator implementation."
+  "remaining_gate": "Historical OHLC and full cross-strike freshness must pass before estimator implementation.",
+  "historical_ohlc_probe": {
+    "data_snapshot_utc": "2026-08-03T18:19:48.204263+00:00",
+    "source_endpoint": "https://www.deribit.com/api/v2/public/get_tradingview_chart_data",
+    "source": "cached",
+    "parameters": {
+      "scope": "smoke",
+      "resolution": "1D",
+      "extension_steps": 6,
+      "selected_event_ids": [
+        "25536",
+        "57016",
+        "211899"
+      ],
+      "selection_rule": "earliest/middle/latest exact expiry matches",
+      "max_instruments": null,
+      "cache_key": "cf2e4457e9c9792f",
+      "cache_manifest": "data/raw/p3_sol/deribit_ohlc_smoke_cf2e4457e9c9792f_manifest.json"
+    },
+    "row_counts": {
+      "grid_instruments": 114,
+      "requested_instruments": 114,
+      "requested_expiries": 3,
+      "instruments_with_ohlc": 25,
+      "instruments_with_real_trades": 21,
+      "instrument_not_found": 72,
+      "instruments_with_no_data": 17,
+      "ohlc_rows": 130,
+      "event_days_observed": 13,
+      "passing_event_days": 0,
+      "passing_events": 0,
+      "passing_expiries": 0
+    },
+    "quality_gate": {
+      "minimum_fresh_strikes": 8,
+      "maximum_stale_bar_share": 0.3,
+      "requires_fresh_calls_and_puts": true
+    },
+    "known_caveats": [
+      "Daily bars establish within-day trading but do not expose exact cross-strike trade timestamps.",
+      "The three-event smoke sample is selected mechanically and is not the final all-candidate panel.",
+      "Instrument-level API failures remain in deribit_ohlc_instrument_diagnostics instead of being dropped."
+    ]
+  }
 }

@@ -2,7 +2,9 @@
 
 **Snapshot:** 2026-08-03 UTC  
 **Git baseline:** `f546f6a012109641957786de5f69927155b9a497`  
-**Label:** `PROVISIONALLY_FEASIBLE — full feasibility gate not yet evaluated`
+**Label:** `SUPERSEDED by P3_SOL_FEASIBILITY_DECISION.md`
+
+The later full-grid smoke probe did not clear the frozen curve-quality gate. This file is retained as the chronological preliminary record; the formal stopping decision is the source of truth.
 
 ## Scope
 

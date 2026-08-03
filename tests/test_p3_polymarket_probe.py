@@ -182,3 +182,4 @@ def test_runner_can_be_executed_by_file_path() -> None:
 
     assert result.returncode == 0, result.stderr
     assert "Run bounded P3 feasibility stages" in result.stdout
+    assert "deribit-ohlc" in result.stdout
