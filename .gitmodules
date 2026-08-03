@@ -1,0 +1,4 @@
+[submodule "dissertation/manuscript"]
+	path = dissertation/manuscript
+	url = https://github.com/Crises-Strity/UCL-Final-Dissertation.git
+	branch = main

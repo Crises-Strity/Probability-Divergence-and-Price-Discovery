@@ -2,12 +2,22 @@
   "release_id": "2026-08-03-initial",
   "authority": "overleaf",
   "dissertation_repository": "Crises-Strity/UCL-Final-Dissertation",
-  "dissertation_commit": "d05b6c86b8ced810ac47d9ed96bb73b6eba7db36",
+  "dissertation_commit": null,
+  "commit_status": "commit_unverified",
+  "github_reference_commit": "d05b6c86b8ced810ac47d9ed96bb73b6eba7db36",
   "export_timezone": "Europe/London",
   "compiler": "LuaTeX-1.21.0",
   "pdf_pages": 56,
   "compile_log_evidence": "screenshots_only",
   "review_status": "pending_initial_review",
+  "source_comparison": {
+    "status": "one_file_mismatch",
+    "path": "chapter/ch7_limitations.tex",
+    "export_value": "Limitations and Conclusion",
+    "github_value": "Limitations and Future Work",
+    "export_modified_at": "2026-08-03T19:49:26+01:00",
+    "github_commit_at": "2026-08-03T20:07:32+01:00"
+  },
   "artifacts": {
     "source.zip": {
       "bytes": 106488,
