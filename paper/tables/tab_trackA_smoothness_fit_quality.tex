@@ -1,0 +1,14 @@
+\begin{table}
+\caption{Track A option repricing fit quality by RND smoothness weight.}
+\label{tab:trackA_smoothness_fit_quality}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+spec & smooth\_weight & event\_days\_common & events\_common & option\_reprice\_rmse\_coin\_mean & option\_reprice\_rmse\_coin\_median & option\_reprice\_rmse\_coin\_p90 & option\_reprice\_rmse\_coin\_p95 & option\_reprice\_rmse\_coin\_max & fitted\_forward\_abs\_rel\_error\_mean \\
+\midrule
+smooth0 & 0.0000 & 293 & 61 & 0.0059 & 0.0054 & 0.0098 & 0.0125 & 0.0193 & 0.0003 \\
+smooth005 & 0.0500 & 293 & 61 & 0.0062 & 0.0055 & 0.0100 & 0.0127 & 0.0194 & 0.0004 \\
+baseline & 0.1000 & 293 & 61 & 0.0064 & 0.0057 & 0.0101 & 0.0130 & 0.0195 & 0.0004 \\
+smooth02 & 0.2000 & 293 & 61 & 0.0067 & 0.0061 & 0.0109 & 0.0135 & 0.0196 & 0.0004 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,6 @@
+﻿stage,event_days,events,cell_rows
+Track A event-day panel,531,79,
+Legacy PM+Deribit min8 main gate,406,67,
+Curve-input gate: stale<=0.30 and fresh strikes>=8,301,61,
+Curve fit success,301,61,
+Curve quality pass,294,61,3114

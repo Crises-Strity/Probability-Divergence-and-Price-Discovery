@@ -1,0 +1,45 @@
+{
+  "generated_at_utc": "2026-08-03T16:02:35.078668+00:00",
+  "script_name": "scripts/P1_pipeline/build_trackB_deribit_survival_panel.py",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "inputs": {
+    "kstar_panel": "data/processed/panels/trackB_kstar_panel.parquet",
+    "raw_60min_ohlc": "data/raw/deribit/ohlc_<event_id>_60.parquet"
+  },
+  "filter_rules": {
+    "primary_events": "bucket_distribution events with pass K* selection",
+    "bar_hours": 6,
+    "bar_construction": "1h uses raw Deribit 60-minute OHLC; Nh aggregates fresh traded 60-minute rows and uses the last traded close inside the block.",
+    "fresh_option_row": "has_real_trade and close > 0 within the Deribit 60-minute OHLC candle",
+    "spot_anchor": "median same-hour put-call parity spot from traded call/put pairs",
+    "survival_estimator": "local call-spread digital using nearest traded call strikes strictly below and above K*",
+    "timestamp_alignment": "Deribit and Polymarket hourly panels are aligned on floored hour-bucket labels; close/last sampled values are interpreted as within-hour endpoints."
+  },
+  "row_counts": {
+    "selected_events": 79,
+    "events_with_rows": 79,
+    "rows": 2226,
+    "pass_rows": 1821,
+    "informative_rows": 1569
+  },
+  "summary": [
+    {
+      "event_type_for_trackB": "bucket_distribution",
+      "events": 79,
+      "hourly_bars": 2226,
+      "pass_bars": 1821,
+      "pass_share": 0.8180592991913747,
+      "informative_bars": 1569,
+      "informative_share": 0.7048517520215634,
+      "pass_median_survival": 0.48796602170835307,
+      "pass_median_abs_change": 0.06701153746219551,
+      "pass_median_fresh_call_strikes": 11.0,
+      "pass_median_parity_pairs": 6.0
+    }
+  ],
+  "known_caveats": [
+    "Deribit TradingView 60-minute OHLC does not expose exact last-trade timestamps inside the candle.",
+    "The local call-spread digital is a first-pass estimator; it is sensitive to sparse hourly call strikes around K*.",
+    "Bars without same-hour parity pairs or bracketing fresh call strikes fail explicitly and must not enter lead-lag tests."
+  ]
+}

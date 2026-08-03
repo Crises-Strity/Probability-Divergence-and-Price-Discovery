@@ -1,0 +1,14 @@
+\begin{table}
+\caption{Track B 6h pooled lead-lag regressions with event fixed effects.}
+\label{tab:trackB_pooled_lead_lag_6h}
+\begin{tabular}{lllrrrrrrr}
+\toprule
+model & formula & term & coef & std\_error\_event\_cluster & t\_stat & p\_value & n\_obs & n\_events & r\_squared \\
+\midrule
+pm\_change\_equation\_deribit\_leads & pm\_change\_joined\_grid \textasciitilde \space deribit\_change\_lag1 + pm\_change\_lag1 + C(event\_id\_fe) & pm\_change\_lag1 & -0.1303 & 0.0459 & -2.8374 & 0.0045 & 703 & 77 & 0.1602 \\
+pm\_change\_equation\_deribit\_leads & pm\_change\_joined\_grid \textasciitilde \space deribit\_change\_lag1 + pm\_change\_lag1 + C(event\_id\_fe) & deribit\_change\_lag1 & 0.0577 & 0.0309 & 1.8699 & 0.0615 & 703 & 77 & 0.1602 \\
+deribit\_change\_equation\_pm\_leads & deribit\_change\_joined\_grid \textasciitilde \space pm\_change\_lag1 + deribit\_change\_lag1 + C(event\_id\_fe) & pm\_change\_lag1 & 0.3297 & 0.0816 & 4.0432 & 0.0001 & 703 & 77 & 0.1819 \\
+deribit\_change\_equation\_pm\_leads & deribit\_change\_joined\_grid \textasciitilde \space pm\_change\_lag1 + deribit\_change\_lag1 + C(event\_id\_fe) & deribit\_change\_lag1 & -0.4006 & 0.0364 & -11.0191 & 0.0000 & 703 & 77 & 0.1819 \\
+\bottomrule
+\end{tabular}
+\end{table}

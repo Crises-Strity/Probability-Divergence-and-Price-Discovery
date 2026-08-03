@@ -1,0 +1,16 @@
+﻿scope,variable,asset,n,spearman_rho,p_value
+partial_asset_tte,spread_diff_pm_minus_deribit,pooled,294,0.6533289370348159,3.6324926056494656e-37
+partial_asset_tte,spread_diff_deribit_minus_pm,pooled,294,-0.6533289370348159,3.6324926056494656e-37
+partial_asset_tte,location_diff_pm_minus_deribit,pooled,294,-0.014665531695561174,0.802275154916033
+partial_asset_tte,skew_diff_pm_minus_deribit,pooled,294,0.061335157053604546,0.2945529876720171
+partial_asset_tte,l1_normalized_divergence,pooled,294,-0.26729570570654426,3.343635873493997e-06
+within_asset,spread_diff_pm_minus_deribit,BTC,173,0.5464455824223757,7.438318888061474e-15
+within_asset,spread_diff_deribit_minus_pm,BTC,173,-0.5464455824223757,7.438318888061474e-15
+within_asset,location_diff_pm_minus_deribit,BTC,173,0.04117951880600693,0.5906228432366565
+within_asset,skew_diff_pm_minus_deribit,BTC,173,0.07360582745058475,0.33583807284816236
+within_asset,l1_normalized_divergence,BTC,173,-0.06281233190643927,0.41165255029093206
+within_asset,spread_diff_pm_minus_deribit,ETH,121,0.6803340539909792,9.266901777724168e-18
+within_asset,spread_diff_deribit_minus_pm,ETH,121,-0.6803340539909792,9.266901777724168e-18
+within_asset,location_diff_pm_minus_deribit,ETH,121,-0.05867525172266334,0.5226412295028794
+within_asset,skew_diff_pm_minus_deribit,ETH,121,-0.014859111992419554,0.8714928538448274
+within_asset,l1_normalized_divergence,ETH,121,-0.014339955105054565,0.8759461687898986

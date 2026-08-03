@@ -1,0 +1,437 @@
+{
+  "generated_at_utc": "2026-08-03T16:01:56.830603+00:00",
+  "script_name": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "inputs": {
+    "event_day_divergence": "data/processed/panels/trackA_event_day_divergence.parquet",
+    "daily_comparison": "data/processed/panels/daily_distribution_comparison.parquet"
+  },
+  "row_counts": {
+    "main_event_days": 294,
+    "main_events": 61,
+    "regression_rows": 30,
+    "partial_spearman_rows": 15,
+    "tail_midpoint_rows": 2,
+    "truncation_rows": 1,
+    "truncation_panel_rows": 294,
+    "smoothness_regression_rows": 15,
+    "smoothness_fit_quality_rows": 4,
+    "smoothness_moment_grid_rows": 4
+  },
+  "primary_formula": "spread_diff_pm_minus_deribit ~ C(horizon_gap_bin, Treatment(reference='-8h')) + time_to_expiry_days + C(asset)",
+  "headline": {
+    "spread_gap_terms": [
+      {
+        "model": "spread_continuous_tte",
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.-32h]",
+        "coef": -0.004104941262696034,
+        "std_error_event_cluster": 0.0011069675777569457,
+        "p_value": 0.0002086751689938479
+      },
+      {
+        "model": "spread_continuous_tte",
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+16h]",
+        "coef": 0.006736784501489891,
+        "std_error_event_cluster": 0.0014961592772305718,
+        "p_value": 6.708962759435502e-06
+      },
+      {
+        "model": "spread_continuous_tte",
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+40h]",
+        "coef": 0.00936687266785477,
+        "std_error_event_cluster": 0.0013618801698822075,
+        "p_value": 6.074220652877719e-12
+      },
+      {
+        "model": "spread_tte_fe",
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.-32h]",
+        "coef": -0.00491674106690664,
+        "std_error_event_cluster": 0.001158763020406112,
+        "p_value": 2.204584871285496e-05
+      },
+      {
+        "model": "spread_tte_fe",
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+16h]",
+        "coef": 0.006483265183573696,
+        "std_error_event_cluster": 0.0015358016317331413,
+        "p_value": 2.427670922150797e-05
+      },
+      {
+        "model": "spread_tte_fe",
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+40h]",
+        "coef": 0.00907152854923924,
+        "std_error_event_cluster": 0.001388670137488044,
+        "p_value": 6.466808183994497e-11
+      }
+    ],
+    "tail_midpoint_robustness": [
+      {
+        "tail_multiplier": 0.5,
+        "event_days": 294,
+        "events": 61,
+        "pm_spread_median": 0.05151079424993729,
+        "deribit_spread_median": 0.04557030336934569,
+        "spread_diff_pm_minus_deribit_median": 0.004022395905267009,
+        "pm_wider_share": 0.7074829931972789,
+        "spearman_gap_spread_diff": 0.5652161421029639,
+        "spearman_p_value": 3.231013402711541e-26
+      },
+      {
+        "tail_multiplier": 1.0,
+        "event_days": 294,
+        "events": 61,
+        "pm_spread_median": 0.0535783848409553,
+        "deribit_spread_median": 0.04762633139599401,
+        "spread_diff_pm_minus_deribit_median": 0.004735024943491418,
+        "pm_wider_share": 0.717687074829932,
+        "spearman_gap_spread_diff": 0.5604039161426737,
+        "spearman_p_value": 1.036740755969922e-25
+      }
+    ],
+    "state_grid_truncation": [
+      {
+        "event_days": 294,
+        "events": 61,
+        "edge_probability_mean": 0.004392713945296932,
+        "edge_probability_median": 0.0013883074389985776,
+        "edge_probability_p90": 0.01249164610701638,
+        "edge_probability_p95": 0.023281089284414094,
+        "edge_probability_p99": 0.028986626230819976,
+        "edge_probability_max": 0.05848869870517042,
+        "days_edge_probability_gt_5pct": 1,
+        "share_edge_probability_gt_5pct": 0.003401360544217687
+      }
+    ],
+    "smoothness_regression_robustness": [
+      {
+        "spec": "smooth005",
+        "smooth_weight": 0.05,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.-32h]",
+        "coef": -0.003585399888241121,
+        "std_error_event_cluster": 0.0009777516491684159,
+        "p_value": 0.0002454279150595555,
+        "n_obs": 296,
+        "n_events": 61,
+        "r_squared": 0.4839461470080316,
+        "pm_wider_share": 0.8108108108108109,
+        "spread_diff_pm_minus_deribit_median": 0.006793639150129732
+      },
+      {
+        "spec": "smooth005",
+        "smooth_weight": 0.05,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+16h]",
+        "coef": 0.0068967001697990155,
+        "std_error_event_cluster": 0.0012948530344803724,
+        "p_value": 1.00265717430019e-07,
+        "n_obs": 296,
+        "n_events": 61,
+        "r_squared": 0.4839461470080316,
+        "pm_wider_share": 0.8108108108108109,
+        "spread_diff_pm_minus_deribit_median": 0.006793639150129732
+      },
+      {
+        "spec": "smooth005",
+        "smooth_weight": 0.05,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+40h]",
+        "coef": 0.0094612107915058,
+        "std_error_event_cluster": 0.0011747352380568643,
+        "p_value": 8.019080163187113e-16,
+        "n_obs": 296,
+        "n_events": 61,
+        "r_squared": 0.4839461470080316,
+        "pm_wider_share": 0.8108108108108109,
+        "spread_diff_pm_minus_deribit_median": 0.006793639150129732
+      },
+      {
+        "spec": "smooth005",
+        "smooth_weight": 0.05,
+        "term": "C(asset)[T.ETH]",
+        "coef": 0.005662726648684481,
+        "std_error_event_cluster": 0.0008445327339475162,
+        "p_value": 2.0118655099352537e-11,
+        "n_obs": 296,
+        "n_events": 61,
+        "r_squared": 0.4839461470080316,
+        "pm_wider_share": 0.8108108108108109,
+        "spread_diff_pm_minus_deribit_median": 0.006793639150129732
+      },
+      {
+        "spec": "smooth005",
+        "smooth_weight": 0.05,
+        "term": "time_to_expiry_days",
+        "coef": 0.00034616583955894423,
+        "std_error_event_cluster": 0.0002938701298101044,
+        "p_value": 0.2388144777211989,
+        "n_obs": 296,
+        "n_events": 61,
+        "r_squared": 0.4839461470080316,
+        "pm_wider_share": 0.8108108108108109,
+        "spread_diff_pm_minus_deribit_median": 0.006793639150129732
+      },
+      {
+        "spec": "baseline",
+        "smooth_weight": 0.1,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.-32h]",
+        "coef": -0.004104941262696034,
+        "std_error_event_cluster": 0.0011069675777569457,
+        "p_value": 0.0002086751689938479,
+        "n_obs": 294,
+        "n_events": 61,
+        "r_squared": 0.468297794265668,
+        "pm_wider_share": 0.7074829931972789,
+        "spread_diff_pm_minus_deribit_median": 0.004022395905267009
+      },
+      {
+        "spec": "baseline",
+        "smooth_weight": 0.1,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+16h]",
+        "coef": 0.006736784501489891,
+        "std_error_event_cluster": 0.0014961592772305718,
+        "p_value": 6.708962759435502e-06,
+        "n_obs": 294,
+        "n_events": 61,
+        "r_squared": 0.468297794265668,
+        "pm_wider_share": 0.7074829931972789,
+        "spread_diff_pm_minus_deribit_median": 0.004022395905267009
+      },
+      {
+        "spec": "baseline",
+        "smooth_weight": 0.1,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+40h]",
+        "coef": 0.00936687266785477,
+        "std_error_event_cluster": 0.0013618801698822075,
+        "p_value": 6.074220652877719e-12,
+        "n_obs": 294,
+        "n_events": 61,
+        "r_squared": 0.468297794265668,
+        "pm_wider_share": 0.7074829931972789,
+        "spread_diff_pm_minus_deribit_median": 0.004022395905267009
+      },
+      {
+        "spec": "baseline",
+        "smooth_weight": 0.1,
+        "term": "C(asset)[T.ETH]",
+        "coef": 0.005407221365697054,
+        "std_error_event_cluster": 0.000987457628722106,
+        "p_value": 4.3528815286548046e-08,
+        "n_obs": 294,
+        "n_events": 61,
+        "r_squared": 0.468297794265668,
+        "pm_wider_share": 0.7074829931972789,
+        "spread_diff_pm_minus_deribit_median": 0.004022395905267009
+      },
+      {
+        "spec": "baseline",
+        "smooth_weight": 0.1,
+        "term": "time_to_expiry_days",
+        "coef": 0.0011258789358871805,
+        "std_error_event_cluster": 0.00029775544466741376,
+        "p_value": 0.0001560614856219102,
+        "n_obs": 294,
+        "n_events": 61,
+        "r_squared": 0.468297794265668,
+        "pm_wider_share": 0.7074829931972789,
+        "spread_diff_pm_minus_deribit_median": 0.004022395905267009
+      },
+      {
+        "spec": "smooth02",
+        "smooth_weight": 0.2,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.-32h]",
+        "coef": -0.005174939583825521,
+        "std_error_event_cluster": 0.0014850046759233085,
+        "p_value": 0.000492510856014656,
+        "n_obs": 293,
+        "n_events": 61,
+        "r_squared": 0.42969631443361855,
+        "pm_wider_share": 0.5255972696245734,
+        "spread_diff_pm_minus_deribit_median": 0.0008425785906285496
+      },
+      {
+        "spec": "smooth02",
+        "smooth_weight": 0.2,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+16h]",
+        "coef": 0.006458708435101247,
+        "std_error_event_cluster": 0.001984132816648763,
+        "p_value": 0.0011332072600957678,
+        "n_obs": 293,
+        "n_events": 61,
+        "r_squared": 0.42969631443361855,
+        "pm_wider_share": 0.5255972696245734,
+        "spread_diff_pm_minus_deribit_median": 0.0008425785906285496
+      },
+      {
+        "spec": "smooth02",
+        "smooth_weight": 0.2,
+        "term": "C(horizon_gap_bin, Treatment(reference='-8h'))[T.+40h]",
+        "coef": 0.008909102865782868,
+        "std_error_event_cluster": 0.001734757029630651,
+        "p_value": 2.8117229879838313e-07,
+        "n_obs": 293,
+        "n_events": 61,
+        "r_squared": 0.42969631443361855,
+        "pm_wider_share": 0.5255972696245734,
+        "spread_diff_pm_minus_deribit_median": 0.0008425785906285496
+      },
+      {
+        "spec": "smooth02",
+        "smooth_weight": 0.2,
+        "term": "C(asset)[T.ETH]",
+        "coef": 0.0044735865180309,
+        "std_error_event_cluster": 0.0013273978860283882,
+        "p_value": 0.0007511566534945343,
+        "n_obs": 293,
+        "n_events": 61,
+        "r_squared": 0.42969631443361855,
+        "pm_wider_share": 0.5255972696245734,
+        "spread_diff_pm_minus_deribit_median": 0.0008425785906285496
+      },
+      {
+        "spec": "smooth02",
+        "smooth_weight": 0.2,
+        "term": "time_to_expiry_days",
+        "coef": 0.0018302105105931152,
+        "std_error_event_cluster": 0.0003206663838999093,
+        "p_value": 1.1463266132783949e-08,
+        "n_obs": 293,
+        "n_events": 61,
+        "r_squared": 0.42969631443361855,
+        "pm_wider_share": 0.5255972696245734,
+        "spread_diff_pm_minus_deribit_median": 0.0008425785906285496
+      }
+    ],
+    "smoothness_fit_quality": [
+      {
+        "spec": "smooth0",
+        "smooth_weight": 0.0,
+        "event_days_common": 293,
+        "events_common": 61,
+        "option_reprice_rmse_coin_mean": 0.005924739384656409,
+        "option_reprice_rmse_coin_median": 0.005438168890857754,
+        "option_reprice_rmse_coin_p90": 0.009840897123550699,
+        "option_reprice_rmse_coin_p95": 0.012490938471511786,
+        "option_reprice_rmse_coin_max": 0.01934664530808241,
+        "fitted_forward_abs_rel_error_mean": 0.00034686165965051716
+      },
+      {
+        "spec": "smooth005",
+        "smooth_weight": 0.05,
+        "event_days_common": 293,
+        "events_common": 61,
+        "option_reprice_rmse_coin_mean": 0.006165665856352733,
+        "option_reprice_rmse_coin_median": 0.005519225003963764,
+        "option_reprice_rmse_coin_p90": 0.010028064973865842,
+        "option_reprice_rmse_coin_p95": 0.01269507197890988,
+        "option_reprice_rmse_coin_max": 0.0194489085132098,
+        "fitted_forward_abs_rel_error_mean": 0.0003515250942842223
+      },
+      {
+        "spec": "baseline",
+        "smooth_weight": 0.1,
+        "event_days_common": 293,
+        "events_common": 61,
+        "option_reprice_rmse_coin_mean": 0.0063514874512795175,
+        "option_reprice_rmse_coin_median": 0.005674868387174259,
+        "option_reprice_rmse_coin_p90": 0.010071542494436989,
+        "option_reprice_rmse_coin_p95": 0.01300455188113779,
+        "option_reprice_rmse_coin_max": 0.01951282606226579,
+        "fitted_forward_abs_rel_error_mean": 0.00036286085604028884
+      },
+      {
+        "spec": "smooth02",
+        "smooth_weight": 0.2,
+        "event_days_common": 293,
+        "events_common": 61,
+        "option_reprice_rmse_coin_mean": 0.006669070754932246,
+        "option_reprice_rmse_coin_median": 0.006069797899027799,
+        "option_reprice_rmse_coin_p90": 0.010871686756691213,
+        "option_reprice_rmse_coin_p95": 0.013473283840471889,
+        "option_reprice_rmse_coin_max": 0.019645121594667674,
+        "fitted_forward_abs_rel_error_mean": 0.0003772463149331414
+      }
+    ],
+    "smoothness_moment_grid": [
+      {
+        "spec": "smooth0",
+        "smooth_weight": 0.0,
+        "event_days_common": 293,
+        "events_common": 61,
+        "l1_median": 0.8857037431924023,
+        "location_diff_median": 0.0009410433051720993,
+        "location_abs_diff_median": 0.005236524631630399,
+        "pm_higher_location_share": 0.5324232081911263,
+        "pm_spread_median": 0.05149312908022611,
+        "deribit_spread_median": 0.03929490507843884,
+        "spread_diff_pm_minus_deribit_median": 0.009556196387606991,
+        "pm_wider_share": 0.9078498293515358,
+        "tail_relative_abs_divergence_mean": 1.1213155009962827,
+        "body_relative_abs_divergence_mean": 1.007961578296728,
+        "tail_log_odds_divergence_mean": 2.7794478181651914,
+        "body_log_odds_divergence_mean": 5.455584958316118,
+        "tail_normalized_divergence_median": 0.01810767132756077
+      },
+      {
+        "spec": "smooth005",
+        "smooth_weight": 0.05,
+        "event_days_common": 293,
+        "events_common": 61,
+        "l1_median": 0.25669715554000017,
+        "location_diff_median": 0.0009489013119319395,
+        "location_abs_diff_median": 0.005295617372431402,
+        "pm_higher_location_share": 0.5460750853242321,
+        "pm_spread_median": 0.05149312908022611,
+        "deribit_spread_median": 0.042482301104851954,
+        "spread_diff_pm_minus_deribit_median": 0.006791376661998777,
+        "pm_wider_share": 0.8122866894197952,
+        "tail_relative_abs_divergence_mean": 0.8894472995769657,
+        "body_relative_abs_divergence_mean": 0.5139776150406289,
+        "tail_log_odds_divergence_mean": 3.13173451998614,
+        "body_log_odds_divergence_mean": 1.7875573106381633,
+        "tail_normalized_divergence_median": 0.017393177306940212
+      },
+      {
+        "spec": "baseline",
+        "smooth_weight": 0.1,
+        "event_days_common": 293,
+        "events_common": 61,
+        "l1_median": 0.23560180838779415,
+        "location_diff_median": 0.0009857899732805303,
+        "location_abs_diff_median": 0.0052931882011228075,
+        "pm_higher_location_share": 0.5460750853242321,
+        "pm_spread_median": 0.05149312908022611,
+        "deribit_spread_median": 0.045370900512006984,
+        "spread_diff_pm_minus_deribit_median": 0.003967985525770171,
+        "pm_wider_share": 0.7064846416382252,
+        "tail_relative_abs_divergence_mean": 0.8574946059287794,
+        "body_relative_abs_divergence_mean": 0.5705612121961218,
+        "tail_log_odds_divergence_mean": 3.5091623524723117,
+        "body_log_odds_divergence_mean": 1.1763102074027758,
+        "tail_normalized_divergence_median": 0.016643827460913974
+      },
+      {
+        "spec": "smooth02",
+        "smooth_weight": 0.2,
+        "event_days_common": 293,
+        "events_common": 61,
+        "l1_median": 0.2524405377509664,
+        "location_diff_median": 0.0008266707477200741,
+        "location_abs_diff_median": 0.005186479883863822,
+        "pm_higher_location_share": 0.552901023890785,
+        "pm_spread_median": 0.05149312908022611,
+        "deribit_spread_median": 0.05015821669957992,
+        "spread_diff_pm_minus_deribit_median": 0.0008425785906285496,
+        "pm_wider_share": 0.5255972696245734,
+        "tail_relative_abs_divergence_mean": 0.9440995399832456,
+        "body_relative_abs_divergence_mean": 0.7543527205835231,
+        "tail_log_odds_divergence_mean": 3.287259067831582,
+        "body_log_odds_divergence_mean": 0.545853635556929,
+        "tail_normalized_divergence_median": 0.01107738158060037
+      }
+    ]
+  },
+  "known_caveats": [
+    "These regressions are diagnostic controls for observed composition, not causal maturity estimates.",
+    "Event-clustered standard errors use 61 event clusters; sub-sample slices should not be promoted over the pooled controlled specification.",
+    "Open-tail midpoint conventions affect spread magnitudes, so spread sign and comparative robustness are safer than a single point estimate.",
+    "The generated-regressor spread level depends on the RND smoothness penalty; smoothness robustness checks show that heavy smoothing attenuates the unconditional PM-wider spread sign."
+  ]
+}

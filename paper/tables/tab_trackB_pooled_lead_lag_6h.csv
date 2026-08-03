@@ -1,0 +1,5 @@
+﻿model,formula,term,coef,std_error_event_cluster,t_stat,p_value,n_obs,n_events,r_squared
+pm_change_equation_deribit_leads,pm_change_joined_grid ~ deribit_change_lag1 + pm_change_lag1 + C(event_id_fe),pm_change_lag1,-0.13027391814038936,0.045912970024580606,-2.8374099534542006,0.0045481173708853805,703,77,0.1601982650583611
+pm_change_equation_deribit_leads,pm_change_joined_grid ~ deribit_change_lag1 + pm_change_lag1 + C(event_id_fe),deribit_change_lag1,0.05772936137828259,0.030873194763905713,1.869886217469622,0.06149962013574965,703,77,0.1601982650583611
+deribit_change_equation_pm_leads,deribit_change_joined_grid ~ pm_change_lag1 + deribit_change_lag1 + C(event_id_fe),pm_change_lag1,0.3297463602187683,0.08155649485214332,4.043164935135788,5.273449685032022e-05,703,77,0.18189674090368058
+deribit_change_equation_pm_leads,deribit_change_joined_grid ~ pm_change_lag1 + deribit_change_lag1 + C(event_id_fe),deribit_change_lag1,-0.4005582360058363,0.03635138504170881,-11.019063937900695,3.092582588226643e-28,703,77,0.18189674090368058

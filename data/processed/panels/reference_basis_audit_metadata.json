@@ -1,0 +1,23 @@
+{
+  "generated_at_utc": "2026-08-03T16:01:57.346244+00:00",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "input_file": "data/processed/polymarket/event_universe.parquet",
+  "output_files": [
+    "data/processed/panels/reference_basis_audit.csv",
+    "data/processed/panels/reference_basis_audit.parquet",
+    "paper/tables/tab_reference_basis_audit_summary.csv",
+    "paper/tables/tab_reference_basis_audit_summary.tex"
+  ],
+  "row_counts": {
+    "audit_rows": 124,
+    "summary_rows": 2,
+    "events": 124
+  },
+  "status_counts": {
+    "proxy_assumed": 124
+  },
+  "notes": [
+    "reference_basis_status is textual/provenance audit status, not a numerical Track A or Track B sample gate.",
+    "proxy_assumed means both references are populated but Polymarket and Deribit reference bases differ."
+  ]
+}

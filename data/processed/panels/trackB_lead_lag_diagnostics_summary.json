@@ -1,0 +1,113 @@
+{
+  "generated_at_utc": "2026-08-03T16:02:36.751522+00:00",
+  "script_name": "scripts/P1_pipeline/build_trackB_lead_lag_diagnostics.py",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "inputs": {
+    "joined_6h": "data/processed/panels/lead_lag_survival_panel_6h.parquet"
+  },
+  "filter_rules": {
+    "sample": "both_sides_informative_candidate rows from 6h joined panel",
+    "regression_sample": "requires consecutive 6h informative observations within event and non-missing current and lagged changes",
+    "inference": "event-clustered standard errors; wild cluster bootstrap not yet implemented"
+  },
+  "row_counts": {
+    "informative_rows": 1121,
+    "informative_events": 79,
+    "regression_rows": 703,
+    "regression_events": 77,
+    "cross_correlation_rows": 5,
+    "regression_terms": 4
+  },
+  "cross_correlation": [
+    {
+      "lag_hours_deribit_relative_to_pm": -12,
+      "interpretation": "Deribit leads PM",
+      "pairs": 584,
+      "corr_pm_t_deribit_t_plus_lag": -0.02330113560244294,
+      "events": 73
+    },
+    {
+      "lag_hours_deribit_relative_to_pm": -6,
+      "interpretation": "Deribit leads PM",
+      "pairs": 703,
+      "corr_pm_t_deribit_t_plus_lag": 0.07358966381714138,
+      "events": 77
+    },
+    {
+      "lag_hours_deribit_relative_to_pm": 0,
+      "interpretation": "contemporaneous",
+      "pairs": 889,
+      "corr_pm_t_deribit_t_plus_lag": 0.5348289671857737,
+      "events": 78
+    },
+    {
+      "lag_hours_deribit_relative_to_pm": 6,
+      "interpretation": "PM leads Deribit",
+      "pairs": 703,
+      "corr_pm_t_deribit_t_plus_lag": 0.02527213588993008,
+      "events": 77
+    },
+    {
+      "lag_hours_deribit_relative_to_pm": 12,
+      "interpretation": "PM leads Deribit",
+      "pairs": 584,
+      "corr_pm_t_deribit_t_plus_lag": 0.05731051354662017,
+      "events": 73
+    }
+  ],
+  "pooled_regressions": [
+    {
+      "model": "pm_change_equation_deribit_leads",
+      "formula": "pm_change_joined_grid ~ deribit_change_lag1 + pm_change_lag1 + C(event_id_fe)",
+      "term": "pm_change_lag1",
+      "coef": -0.13027391814038936,
+      "std_error_event_cluster": 0.045912970024580606,
+      "t_stat": -2.8374099534542006,
+      "p_value": 0.0045481173708853805,
+      "n_obs": 703,
+      "n_events": 77,
+      "r_squared": 0.1601982650583611
+    },
+    {
+      "model": "pm_change_equation_deribit_leads",
+      "formula": "pm_change_joined_grid ~ deribit_change_lag1 + pm_change_lag1 + C(event_id_fe)",
+      "term": "deribit_change_lag1",
+      "coef": 0.05772936137828259,
+      "std_error_event_cluster": 0.030873194763905713,
+      "t_stat": 1.869886217469622,
+      "p_value": 0.06149962013574965,
+      "n_obs": 703,
+      "n_events": 77,
+      "r_squared": 0.1601982650583611
+    },
+    {
+      "model": "deribit_change_equation_pm_leads",
+      "formula": "deribit_change_joined_grid ~ pm_change_lag1 + deribit_change_lag1 + C(event_id_fe)",
+      "term": "pm_change_lag1",
+      "coef": 0.3297463602187683,
+      "std_error_event_cluster": 0.08155649485214332,
+      "t_stat": 4.043164935135788,
+      "p_value": 5.273449685032022e-05,
+      "n_obs": 703,
+      "n_events": 77,
+      "r_squared": 0.18189674090368058
+    },
+    {
+      "model": "deribit_change_equation_pm_leads",
+      "formula": "deribit_change_joined_grid ~ pm_change_lag1 + deribit_change_lag1 + C(event_id_fe)",
+      "term": "deribit_change_lag1",
+      "coef": -0.4005582360058363,
+      "std_error_event_cluster": 0.03635138504170881,
+      "t_stat": -11.019063937900695,
+      "p_value": 3.092582588226643e-28,
+      "n_obs": 703,
+      "n_events": 77,
+      "r_squared": 0.18189674090368058
+    }
+  ],
+  "known_caveats": [
+    "This is a pooled 6h Granger-style diagnostic, not Hasbrouck information share.",
+    "6h aggregation reduces Deribit microstructure noise but cannot identify sub-6h price discovery.",
+    "Event-clustered standard errors are descriptive until a wild cluster bootstrap is added."
+  ]
+}

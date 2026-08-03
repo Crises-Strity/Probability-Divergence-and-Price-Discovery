@@ -1,0 +1,47 @@
+{
+  "generated_at_utc": "2026-08-03T16:01:58.203547+00:00",
+  "script_name": "scripts/P1_pipeline/build_trackB_kstar_panel.py",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "inputs": {
+    "event_universe": "data/processed/polymarket/event_universe.parquet",
+    "event_cells": "data/processed/polymarket/event_cells.parquet",
+    "pm_hourly": "data/processed/polymarket/polymarket_distribution_hourly.parquet",
+    "raw_point_histories": "data/raw/polymarket/prices_history_<event_id>.parquet"
+  },
+  "filter_rules": {
+    "bucket_kstar": "finite Polymarket boundary with first clean post-warmup PM survival closest to 0.5",
+    "point_kstar": "market-defined point_above threshold with first post-warmup YES price closest to 0.5",
+    "warmup_hours": 3
+  },
+  "row_counts": {
+    "trackB_events": 124,
+    "pass_events": 124,
+    "bucket_events": 79,
+    "point_events": 45
+  },
+  "summary": [
+    {
+      "event_type_for_trackB": "bucket_distribution",
+      "events": 79,
+      "pass_events": 79,
+      "pass_share": 1.0,
+      "median_initial_pm_survival": 0.4900627615062761,
+      "median_distance_to_half": 0.04444956241363429,
+      "median_kstar": 4800.0
+    },
+    {
+      "event_type_for_trackB": "point_threshold",
+      "events": 45,
+      "pass_events": 45,
+      "pass_share": 1.0,
+      "median_initial_pm_survival": 0.505,
+      "median_distance_to_half": 0.265,
+      "median_kstar": 3900.0
+    }
+  ],
+  "known_caveats": [
+    "No external BTC/ETH event-start index series is available in the repository yet; initial_k_star_moneyness is therefore null.",
+    "Bucket-event K* currently uses an ex-ante Polymarket-implied fallback rather than a spot-index ATM boundary.",
+    "Point-threshold events contain multiple market-defined thresholds; the current rule picks the least saturated threshold near 0.5 at the first post-warmup observation."
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "generated_at_utc": "2026-08-03T16:01:55.339825+00:00",
+  "script_name": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "inputs": {
+    "event_day_quality": "data/processed/panels/trackA_event_day_quality.parquet",
+    "event_day_divergence": "data/processed/panels/trackA_event_day_divergence.parquet",
+    "daily_comparison": "data/processed/panels/daily_distribution_comparison.parquet",
+    "curve_fits": "data/processed/deribit/deribit_curve_fits.parquet"
+  },
+  "row_counts": {
+    "trackA_event_day_panel_rows": 531,
+    "curve_input_candidate_days": 301,
+    "curve_fit_days": 301,
+    "curve_quality_pass_days": 294,
+    "main_comparison_event_days": 294,
+    "main_comparison_events": 61,
+    "main_comparison_cell_rows": 3114
+  },
+  "headline_diagnostics": {
+    "l1_mean": 0.28845835745045045,
+    "l1_median": 0.23548052053592744,
+    "l1_p25": 0.1787959009187318,
+    "l1_p75": 0.35072469565931214,
+    "l2_mean": 0.11783336520295605,
+    "l2_median": 0.09042782696028734,
+    "tail_divergence_mean": 0.0065572860471577584,
+    "tail_divergence_median": 0.01673537526080961,
+    "tail_relative_abs_divergence_mean": 0.857979318153511,
+    "body_relative_abs_divergence_mean": 0.5706036474097833,
+    "pm_spread_median": 0.05151079424993729,
+    "deribit_spread_median": 0.04557030336934569,
+    "pm_wider_than_deribit_share": 0.7074829931972789,
+    "spread_diff_pm_minus_deribit_median": 0.004022395905267009,
+    "option_reprice_rmse_coin_mean": 0.006395922623918779,
+    "stale_share_mean": 0.16197974454193434
+  },
+  "gap_confound_diagnostics": [
+    {
+      "variable": "time_to_expiry_hours",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": -0.3636542409511669,
+      "p_value": 1.2735165905556204e-10
+    },
+    {
+      "variable": "location_diff_pm_minus_deribit",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": -0.005958985851025901,
+      "p_value": 0.9189622934200381
+    },
+    {
+      "variable": "spread_diff_pm_minus_deribit",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": 0.5652161421029639,
+      "p_value": 3.231013402711541e-26
+    },
+    {
+      "variable": "spread_diff_deribit_minus_pm",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": -0.5652161421029639,
+      "p_value": 3.231013402711541e-26
+    },
+    {
+      "variable": "skew_diff_pm_minus_deribit",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": 0.037667631932361764,
+      "p_value": 0.5200020197045065
+    },
+    {
+      "variable": "l1_normalized_divergence",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": -0.03857695371751564,
+      "p_value": 0.5099699772697436
+    },
+    {
+      "variable": "deribit_stale_bar_share",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": 0.016948219064095583,
+      "p_value": 0.7722873581397292
+    },
+    {
+      "variable": "option_reprice_rmse_coin",
+      "n": 294,
+      "spearman_rho_vs_signed_gap": 0.07152217214214444,
+      "p_value": 0.221446081266362
+    }
+  ],
+  "example_distribution": {
+    "event_id": 86290,
+    "date": "2025-11-24",
+    "asset": "ETH",
+    "l1_normalized_divergence": 0.23560180838779415,
+    "selection_rule": "event-day closest to median L1 among main Track A comparison days"
+  },
+  "outputs": {
+    "tables_dir": "paper/tables",
+    "figures_dir": "paper/figures"
+  },
+  "known_caveats": [
+    "These diagnostics are descriptive first-pass Track A outputs, not causal or tradability results.",
+    "Raw Polymarket-Deribit differences mix physical-vs-risk-neutral wedges, horizon gaps, reference-basis mismatch, liquidity, and model error.",
+    "Deribit curves use daily OHLC close and parity-implied spot; intraday non-synchronicity remains a limitation."
+  ]
+}

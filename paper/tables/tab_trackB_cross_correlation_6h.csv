@@ -1,0 +1,6 @@
+﻿lag_hours_deribit_relative_to_pm,interpretation,pairs,corr_pm_t_deribit_t_plus_lag,events
+-12,Deribit leads PM,584,-0.02330113560244294,73
+-6,Deribit leads PM,703,0.07358966381714138,77
+0,contemporaneous,889,0.5348289671857737,78
+6,PM leads Deribit,703,0.02527213588993008,77
+12,PM leads Deribit,584,0.05731051354662017,73

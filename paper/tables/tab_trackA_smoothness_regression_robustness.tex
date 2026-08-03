@@ -1,0 +1,25 @@
+\begin{table}
+\caption{Track A spread-regression robustness to RND smoothness weight.}
+\label{tab:trackA_smoothness_regression_robustness}
+\begin{tabular}{lrlrrrrrrrr}
+\toprule
+spec & smooth\_weight & term & coef & std\_error\_event\_cluster & p\_value & n\_obs & n\_events & r\_squared & pm\_wider\_share & spread\_diff\_pm\_minus\_deribit\_median \\
+\midrule
+smooth005 & 0.0500 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.-32h] & -0.0036 & 0.0010 & 0.0002 & 296 & 61 & 0.4839 & 0.8108 & 0.0068 \\
+smooth005 & 0.0500 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.+16h] & 0.0069 & 0.0013 & 0.0000 & 296 & 61 & 0.4839 & 0.8108 & 0.0068 \\
+smooth005 & 0.0500 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.+40h] & 0.0095 & 0.0012 & 0.0000 & 296 & 61 & 0.4839 & 0.8108 & 0.0068 \\
+smooth005 & 0.0500 & C(asset)[T.ETH] & 0.0057 & 0.0008 & 0.0000 & 296 & 61 & 0.4839 & 0.8108 & 0.0068 \\
+smooth005 & 0.0500 & time\_to\_expiry\_days & 0.0003 & 0.0003 & 0.2388 & 296 & 61 & 0.4839 & 0.8108 & 0.0068 \\
+baseline & 0.1000 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.-32h] & -0.0041 & 0.0011 & 0.0002 & 294 & 61 & 0.4683 & 0.7075 & 0.0040 \\
+baseline & 0.1000 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.+16h] & 0.0067 & 0.0015 & 0.0000 & 294 & 61 & 0.4683 & 0.7075 & 0.0040 \\
+baseline & 0.1000 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.+40h] & 0.0094 & 0.0014 & 0.0000 & 294 & 61 & 0.4683 & 0.7075 & 0.0040 \\
+baseline & 0.1000 & C(asset)[T.ETH] & 0.0054 & 0.0010 & 0.0000 & 294 & 61 & 0.4683 & 0.7075 & 0.0040 \\
+baseline & 0.1000 & time\_to\_expiry\_days & 0.0011 & 0.0003 & 0.0002 & 294 & 61 & 0.4683 & 0.7075 & 0.0040 \\
+smooth02 & 0.2000 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.-32h] & -0.0052 & 0.0015 & 0.0005 & 293 & 61 & 0.4297 & 0.5256 & 0.0008 \\
+smooth02 & 0.2000 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.+16h] & 0.0065 & 0.0020 & 0.0011 & 293 & 61 & 0.4297 & 0.5256 & 0.0008 \\
+smooth02 & 0.2000 & C(horizon\_gap\_bin, Treatment(reference='-8h'))[T.+40h] & 0.0089 & 0.0017 & 0.0000 & 293 & 61 & 0.4297 & 0.5256 & 0.0008 \\
+smooth02 & 0.2000 & C(asset)[T.ETH] & 0.0045 & 0.0013 & 0.0008 & 293 & 61 & 0.4297 & 0.5256 & 0.0008 \\
+smooth02 & 0.2000 & time\_to\_expiry\_days & 0.0018 & 0.0003 & 0.0000 & 293 & 61 & 0.4297 & 0.5256 & 0.0008 \\
+\bottomrule
+\end{tabular}
+\end{table}

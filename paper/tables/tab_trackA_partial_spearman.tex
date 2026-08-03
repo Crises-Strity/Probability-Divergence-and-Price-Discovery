@@ -1,0 +1,25 @@
+\begin{table}
+\caption{Track A partial and within-asset Spearman diagnostics.}
+\label{tab:trackA_partial_spearman}
+\begin{tabular}{lllrrr}
+\toprule
+scope & variable & asset & n & spearman\_rho & p\_value \\
+\midrule
+partial\_asset\_tte & spread\_diff\_pm\_minus\_deribit & pooled & 294 & 0.6533 & 0.0000 \\
+partial\_asset\_tte & spread\_diff\_deribit\_minus\_pm & pooled & 294 & -0.6533 & 0.0000 \\
+partial\_asset\_tte & location\_diff\_pm\_minus\_deribit & pooled & 294 & -0.0147 & 0.8023 \\
+partial\_asset\_tte & skew\_diff\_pm\_minus\_deribit & pooled & 294 & 0.0613 & 0.2946 \\
+partial\_asset\_tte & l1\_normalized\_divergence & pooled & 294 & -0.2673 & 0.0000 \\
+within\_asset & spread\_diff\_pm\_minus\_deribit & BTC & 173 & 0.5464 & 0.0000 \\
+within\_asset & spread\_diff\_deribit\_minus\_pm & BTC & 173 & -0.5464 & 0.0000 \\
+within\_asset & location\_diff\_pm\_minus\_deribit & BTC & 173 & 0.0412 & 0.5906 \\
+within\_asset & skew\_diff\_pm\_minus\_deribit & BTC & 173 & 0.0736 & 0.3358 \\
+within\_asset & l1\_normalized\_divergence & BTC & 173 & -0.0628 & 0.4117 \\
+within\_asset & spread\_diff\_pm\_minus\_deribit & ETH & 121 & 0.6803 & 0.0000 \\
+within\_asset & spread\_diff\_deribit\_minus\_pm & ETH & 121 & -0.6803 & 0.0000 \\
+within\_asset & location\_diff\_pm\_minus\_deribit & ETH & 121 & -0.0587 & 0.5226 \\
+within\_asset & skew\_diff\_pm\_minus\_deribit & ETH & 121 & -0.0149 & 0.8715 \\
+within\_asset & l1\_normalized\_divergence & ETH & 121 & -0.0143 & 0.8759 \\
+\bottomrule
+\end{tabular}
+\end{table}

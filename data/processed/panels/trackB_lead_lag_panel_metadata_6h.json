@@ -1,0 +1,58 @@
+{
+  "generated_at_utc": "2026-08-03T16:02:35.759883+00:00",
+  "script_name": "scripts/P1_pipeline/build_trackB_lead_lag_panel.py",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "inputs": {
+    "pm_survival": "data/processed/panels/pm_survival_hourly.parquet",
+    "deribit_survival": "data/processed/panels/deribit_survival_6h.parquet"
+  },
+  "filter_rules": {
+    "primary_sample": "bucket_distribution only; point_threshold excluded from primary Track B lead-lag panel",
+    "bar_hours": 6,
+    "join": "inner join on event_id and floored hourly timestamp",
+    "joint_informative": "PM informative candidate AND Deribit informative candidate",
+    "timestamp_alignment": "both panels use floored hour-bucket labels; this does not eliminate within-hour non-synchronicity."
+  },
+  "row_counts": {
+    "rows": 1869,
+    "events": 79,
+    "joint_informative_rows": 1121,
+    "joint_real_update_rows": 1869
+  },
+  "summary": [
+    {
+      "event_type_for_trackB": "bucket_distribution",
+      "events": 79,
+      "total_joined_hours": 1869,
+      "total_pm_informative_hours": 1504,
+      "total_deribit_informative_hours": 1349,
+      "total_joint_informative_hours": 1121,
+      "median_joined_hours": 25.0,
+      "median_joint_informative_hours": 15.0,
+      "events_ge_72_joint_informative_hours": 0,
+      "events_ge_48_joint_informative_hours": 0,
+      "events_zero_joint_informative_hours": 0,
+      "median_abs_divergence": 0.055076392311483535
+    }
+  ],
+  "frequency_diagnostics": [
+    {
+      "bar_hours": 6,
+      "change_pair_rows": 889,
+      "corr_pm_deribit_changes": 0.5348289671857737,
+      "pm_change_std": 0.09106988440846876,
+      "deribit_change_std": 0.1449901616581033,
+      "deribit_pm_std_ratio": 1.5920758283582535,
+      "deribit_change_lag1_autocorr": -0.24838708511684726,
+      "median_max_consecutive_joint_informative_hours": 48.0,
+      "max_consecutive_joint_informative_hours": 126,
+      "events_ge_24h_consecutive_joint_informative": 72,
+      "events_ge_48h_consecutive_joint_informative": 43
+    }
+  ],
+  "known_caveats": [
+    "The joined panel is not yet a regression sample; it is a coverage and alignment diagnostic.",
+    "Within-hour non-synchronicity remains because Deribit 60-minute OHLC lacks exact last-trade timestamps.",
+    "Lead-lag tests should use both_sides_informative_candidate or report full vs informative-sample differences explicitly."
+  ]
+}

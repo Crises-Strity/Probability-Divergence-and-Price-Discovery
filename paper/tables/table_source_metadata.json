@@ -1,0 +1,935 @@
+{
+  "generated_at_utc": "2026-08-03T16:02:36.876248+00:00",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "table_count": 30,
+  "entries": [
+    {
+      "table_stem": "tab_reference_basis_audit_summary",
+      "csv": "paper/tables/tab_reference_basis_audit_summary.csv",
+      "tex": "paper/tables/tab_reference_basis_audit_summary.tex",
+      "tex_file_exists": true,
+      "rows": 2,
+      "script": "scripts/P2_diagnostics/build_reference_basis_audit.py",
+      "script_file": "scripts/P2_diagnostics/build_reference_basis_audit.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/polymarket/event_universe.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/reference_basis_audit_metadata.json",
+      "metadata_file_exists": true,
+      "paper_use": "P2 reference-basis audit for Polymarket rule text versus Deribit index references.",
+      "sample_gate": "All canonical events; reference_basis_status is a textual/provenance audit status, not an empirical exclusion gate."
+    },
+    {
+      "table_stem": "tab_trackA_cell_divergence",
+      "csv": "paper/tables/tab_trackA_cell_divergence.csv",
+      "tex": "paper/tables/tab_trackA_cell_divergence.tex",
+      "tex_file_exists": true,
+      "rows": 5,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_curve_quality",
+      "csv": "paper/tables/tab_trackA_curve_quality.csv",
+      "tex": "paper/tables/tab_trackA_curve_quality.tex",
+      "tex_file_exists": true,
+      "rows": 4,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_divergence_by_asset",
+      "csv": "paper/tables/tab_trackA_divergence_by_asset.csv",
+      "tex": "paper/tables/tab_trackA_divergence_by_asset.tex",
+      "tex_file_exists": true,
+      "rows": 2,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_divergence_by_asset_gap",
+      "csv": "paper/tables/tab_trackA_divergence_by_asset_gap.csv",
+      "tex": "paper/tables/tab_trackA_divergence_by_asset_gap.tex",
+      "tex_file_exists": true,
+      "rows": 8,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_divergence_by_gap",
+      "csv": "paper/tables/tab_trackA_divergence_by_gap.csv",
+      "tex": "paper/tables/tab_trackA_divergence_by_gap.tex",
+      "tex_file_exists": true,
+      "rows": 4,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_divergence_overall",
+      "csv": "paper/tables/tab_trackA_divergence_overall.csv",
+      "tex": "paper/tables/tab_trackA_divergence_overall.tex",
+      "tex_file_exists": true,
+      "rows": 11,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_gap_confound_diagnostics",
+      "csv": "paper/tables/tab_trackA_gap_confound_diagnostics.csv",
+      "tex": "paper/tables/tab_trackA_gap_confound_diagnostics.tex",
+      "tex_file_exists": true,
+      "rows": 8,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_moments_by_gap",
+      "csv": "paper/tables/tab_trackA_moments_by_gap.csv",
+      "tex": "paper/tables/tab_trackA_moments_by_gap.tex",
+      "tex_file_exists": true,
+      "rows": 4,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_moments_by_tte_gap",
+      "csv": "paper/tables/tab_trackA_moments_by_tte_gap.csv",
+      "tex": "paper/tables/tab_trackA_moments_by_tte_gap.tex",
+      "tex_file_exists": true,
+      "rows": 25,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_partial_spearman",
+      "csv": "paper/tables/tab_trackA_partial_spearman.csv",
+      "tex": "paper/tables/tab_trackA_partial_spearman.tex",
+      "tex_file_exists": true,
+      "rows": 15,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_sample_funnel",
+      "csv": "paper/tables/tab_trackA_sample_funnel.csv",
+      "tex": "paper/tables/tab_trackA_sample_funnel.tex",
+      "tex_file_exists": true,
+      "rows": 5,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackA_smoothness_fit_quality",
+      "csv": "paper/tables/tab_trackA_smoothness_fit_quality.csv",
+      "tex": "paper/tables/tab_trackA_smoothness_fit_quality.tex",
+      "tex_file_exists": true,
+      "rows": 4,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_smoothness_moment_grid",
+      "csv": "paper/tables/tab_trackA_smoothness_moment_grid.csv",
+      "tex": "paper/tables/tab_trackA_smoothness_moment_grid.tex",
+      "tex_file_exists": true,
+      "rows": 4,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_smoothness_regression_robustness",
+      "csv": "paper/tables/tab_trackA_smoothness_regression_robustness.csv",
+      "tex": "paper/tables/tab_trackA_smoothness_regression_robustness.tex",
+      "tex_file_exists": true,
+      "rows": 15,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_spread_regressions",
+      "csv": "paper/tables/tab_trackA_spread_regressions.csv",
+      "tex": "paper/tables/tab_trackA_spread_regressions.tex",
+      "tex_file_exists": true,
+      "rows": 30,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_state_grid_truncation",
+      "csv": "paper/tables/tab_trackA_state_grid_truncation.csv",
+      "tex": "paper/tables/tab_trackA_state_grid_truncation.tex",
+      "tex_file_exists": true,
+      "rows": 1,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_state_grid_truncation_top",
+      "csv": "paper/tables/tab_trackA_state_grid_truncation_top.csv",
+      "tex": "paper/tables/tab_trackA_state_grid_truncation_top.tex",
+      "tex_file_exists": true,
+      "rows": 10,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_tail_midpoint_robustness",
+      "csv": "paper/tables/tab_trackA_tail_midpoint_robustness.csv",
+      "tex": "paper/tables/tab_trackA_tail_midpoint_robustness.tex",
+      "tex_file_exists": true,
+      "rows": 2,
+      "script": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_regression_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_state_price_grid.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth005.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence_smooth02.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_regression_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A spread-wedge controls and robustness checks.",
+      "sample_gate": "trackA_comparison_main_candidate, event-clustered inference for regressions."
+    },
+    {
+      "table_stem": "tab_trackA_tail_relative_wedge",
+      "csv": "paper/tables/tab_trackA_tail_relative_wedge.csv",
+      "tex": "paper/tables/tab_trackA_tail_relative_wedge.tex",
+      "tex_file_exists": true,
+      "rows": 2,
+      "script": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackA_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackA_event_day_quality.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/trackA_event_day_divergence.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/daily_distribution_comparison.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_curve_fits.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackA_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track A sample funnel, distribution-distance diagnostics, curve quality, and moment summaries.",
+      "sample_gate": "trackA_comparison_main_candidate for final comparison tables unless table name explicitly reports funnel or curve quality."
+    },
+    {
+      "table_stem": "tab_trackB_cross_correlation_6h",
+      "csv": "paper/tables/tab_trackB_cross_correlation_6h.csv",
+      "tex": "paper/tables/tab_trackB_cross_correlation_6h.tex",
+      "tex_file_exists": true,
+      "rows": 5,
+      "script": "scripts/P1_pipeline/build_trackB_lead_lag_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_lead_lag_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/lead_lag_survival_panel_6h.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_lead_lag_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B 6h frequency diagnostics, symmetric cross-correlations, and pooled lead-lag regressions.",
+      "sample_gate": "both_sides_informative_candidate with non-null changes; directional coefficients require measurement-error caveat."
+    },
+    {
+      "table_stem": "tab_trackB_deribit_survival_summary",
+      "csv": "paper/tables/tab_trackB_deribit_survival_summary.csv",
+      "tex": "paper/tables/tab_trackB_deribit_survival_summary.tex",
+      "tex_file_exists": true,
+      "rows": 1,
+      "script": "scripts/P1_pipeline/build_trackB_deribit_survival_panel.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_deribit_survival_panel.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackB_kstar_panel.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_bar_quality_60.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_deribit_survival_metadata.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B hourly Deribit local-survival feasibility diagnostics.",
+      "sample_gate": "bucket_distribution events only; local call-spread digital with survival in (0.05, 0.95) for informative rows."
+    },
+    {
+      "table_stem": "tab_trackB_deribit_survival_summary_6h",
+      "csv": "paper/tables/tab_trackB_deribit_survival_summary_6h.csv",
+      "tex": "paper/tables/tab_trackB_deribit_survival_summary_6h.tex",
+      "tex_file_exists": true,
+      "rows": 1,
+      "script": "scripts/P1_pipeline/build_trackB_deribit_survival_panel.py --bar-hours 6",
+      "script_file": "scripts/P1_pipeline/build_trackB_deribit_survival_panel.py",
+      "script_args": [
+        "--bar-hours",
+        "6"
+      ],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackB_kstar_panel.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/deribit/deribit_bar_quality_60.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_deribit_survival_metadata_6h.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B 6h Deribit local-survival feasibility diagnostics.",
+      "sample_gate": "bucket_distribution events only; 6h local call-spread digital with survival in (0.05, 0.95) for informative rows."
+    },
+    {
+      "table_stem": "tab_trackB_frequency_diagnostics_6h",
+      "csv": "paper/tables/tab_trackB_frequency_diagnostics_6h.csv",
+      "tex": "paper/tables/tab_trackB_frequency_diagnostics_6h.tex",
+      "tex_file_exists": true,
+      "rows": 1,
+      "script": "scripts/P1_pipeline/build_trackB_lead_lag_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_lead_lag_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/lead_lag_survival_panel_6h.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_lead_lag_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B 6h frequency diagnostics, symmetric cross-correlations, and pooled lead-lag regressions.",
+      "sample_gate": "both_sides_informative_candidate with non-null changes; directional coefficients require measurement-error caveat."
+    },
+    {
+      "table_stem": "tab_trackB_joint_survival_coverage",
+      "csv": "paper/tables/tab_trackB_joint_survival_coverage.csv",
+      "tex": "paper/tables/tab_trackB_joint_survival_coverage.tex",
+      "tex_file_exists": true,
+      "rows": 1,
+      "script": "scripts/P1_pipeline/build_trackB_lead_lag_panel.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_lead_lag_panel.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/pm_survival_hourly.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/deribit_survival_hourly.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_lead_lag_panel_metadata.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B hourly joined PM-Deribit coverage diagnostics.",
+      "sample_gate": "both_sides_informative_candidate after joining PM and Deribit on event_id and timestamp."
+    },
+    {
+      "table_stem": "tab_trackB_joint_survival_coverage_6h",
+      "csv": "paper/tables/tab_trackB_joint_survival_coverage_6h.csv",
+      "tex": "paper/tables/tab_trackB_joint_survival_coverage_6h.tex",
+      "tex_file_exists": true,
+      "rows": 1,
+      "script": "scripts/P1_pipeline/build_trackB_lead_lag_panel.py --bar-hours 6",
+      "script_file": "scripts/P1_pipeline/build_trackB_lead_lag_panel.py",
+      "script_args": [
+        "--bar-hours",
+        "6"
+      ],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/pm_survival_hourly.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/panels/deribit_survival_6h.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_lead_lag_panel_metadata_6h.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B 6h joined PM-Deribit coverage diagnostics.",
+      "sample_gate": "both_sides_informative_candidate after joining PM and Deribit on event_id and 6h timestamp."
+    },
+    {
+      "table_stem": "tab_trackB_kstar_summary",
+      "csv": "paper/tables/tab_trackB_kstar_summary.csv",
+      "tex": "paper/tables/tab_trackB_kstar_summary.tex",
+      "tex_file_exists": true,
+      "rows": 2,
+      "script": "scripts/P1_pipeline/build_trackB_kstar_panel.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_kstar_panel.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/polymarket/event_universe.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/polymarket/event_cells.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/polymarket/polymarket_distribution_hourly.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_kstar_metadata.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B K* selection diagnostics.",
+      "sample_gate": "All Track B-eligible event types for diagnostics; primary Track B later restricts to bucket_distribution."
+    },
+    {
+      "table_stem": "tab_trackB_pm_informative_event_summary",
+      "csv": "paper/tables/tab_trackB_pm_informative_event_summary.csv",
+      "tex": "paper/tables/tab_trackB_pm_informative_event_summary.tex",
+      "tex_file_exists": true,
+      "rows": 2,
+      "script": "scripts/P1_pipeline/build_trackB_pm_survival_panel.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_pm_survival_panel.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackB_kstar_panel.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/polymarket/polymarket_distribution_hourly.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_pm_survival_metadata.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B Polymarket survival and saturation diagnostics.",
+      "sample_gate": "PM informative candidate = pass quality AND real update AND survival in (0.05, 0.95)."
+    },
+    {
+      "table_stem": "tab_trackB_pm_survival_summary",
+      "csv": "paper/tables/tab_trackB_pm_survival_summary.csv",
+      "tex": "paper/tables/tab_trackB_pm_survival_summary.tex",
+      "tex_file_exists": true,
+      "rows": 2,
+      "script": "scripts/P1_pipeline/build_trackB_pm_survival_panel.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_pm_survival_panel.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/trackB_kstar_panel.parquet",
+          "exists": true
+        },
+        {
+          "path": "data/processed/polymarket/polymarket_distribution_hourly.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_pm_survival_metadata.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B Polymarket survival and saturation diagnostics.",
+      "sample_gate": "PM informative candidate = pass quality AND real update AND survival in (0.05, 0.95)."
+    },
+    {
+      "table_stem": "tab_trackB_pooled_lead_lag_6h",
+      "csv": "paper/tables/tab_trackB_pooled_lead_lag_6h.csv",
+      "tex": "paper/tables/tab_trackB_pooled_lead_lag_6h.tex",
+      "tex_file_exists": true,
+      "rows": 4,
+      "script": "scripts/P1_pipeline/build_trackB_lead_lag_diagnostics.py",
+      "script_file": "scripts/P1_pipeline/build_trackB_lead_lag_diagnostics.py",
+      "script_args": [],
+      "script_file_exists": true,
+      "input_files": [
+        {
+          "path": "data/processed/panels/lead_lag_survival_panel_6h.parquet",
+          "exists": true
+        }
+      ],
+      "metadata_file": "data/processed/panels/trackB_lead_lag_diagnostics_summary.json",
+      "metadata_file_exists": true,
+      "paper_use": "Track B 6h frequency diagnostics, symmetric cross-correlations, and pooled lead-lag regressions.",
+      "sample_gate": "both_sides_informative_candidate with non-null changes; directional coefficients require measurement-error caveat."
+    }
+  ]
+}

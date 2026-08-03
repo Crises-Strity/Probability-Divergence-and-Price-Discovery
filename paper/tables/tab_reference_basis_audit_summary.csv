@@ -1,0 +1,3 @@
+﻿asset,reference_basis_status,n_events,n_trackA_eligible,n_trackB_eligible,resolution_text_available_share,reference_basis_mismatch_share
+BTC,proxy_assumed,60,39,60,1.0,1.0
+ETH,proxy_assumed,64,40,64,1.0,1.0

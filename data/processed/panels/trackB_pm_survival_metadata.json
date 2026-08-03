@@ -1,0 +1,88 @@
+{
+  "generated_at_utc": "2026-08-03T16:01:59.611981+00:00",
+  "script_name": "scripts/P1_pipeline/build_trackB_pm_survival_panel.py",
+  "git_commit": "97500d7bd73c2d8497f1ae00ad30f59f4483342a",
+  "inputs": {
+    "kstar_panel": "data/processed/panels/trackB_kstar_panel.parquet",
+    "pm_hourly_distribution": "data/processed/polymarket/polymarket_distribution_hourly.parquet",
+    "raw_point_histories": "data/raw/polymarket/prices_history_<event_id>.parquet"
+  },
+  "filter_rules": {
+    "bucket_survival": "sum normalized bucket probabilities for cells with cell_low >= K_star",
+    "point_survival": "YES price for the selected point_above threshold",
+    "saturation_flag": "pm_survival <= 0.05 or >= 0.95",
+    "warmup_hours": 3
+  },
+  "row_counts": {
+    "rows": 18225,
+    "events": 124,
+    "bucket_events": 79,
+    "point_events": 45,
+    "pass_quality_rows": 16700,
+    "informative_rows": 12409
+  },
+  "summary": [
+    {
+      "event_type_for_trackB": "bucket_distribution",
+      "events": 79,
+      "hourly_bars": 11756,
+      "pass_quality_bars": 10361,
+      "pass_quality_share": 0.881337189520245,
+      "real_update_share": 0.9723545423613474,
+      "saturated_share": 0.08971201212580523,
+      "pass_quality_real_update_share": 0.9767396969404497,
+      "pass_quality_saturated_share": 0.08985619148730817,
+      "median_survival": 0.4780572915400142,
+      "pass_quality_median_survival": 0.4774066797642436,
+      "median_abs_change": 0.011523034653936184,
+      "pass_quality_median_abs_change": 0.011371307015342835
+    },
+    {
+      "event_type_for_trackB": "point_threshold",
+      "events": 45,
+      "hourly_bars": 6469,
+      "pass_quality_bars": 6339,
+      "pass_quality_share": 0.9799041582933993,
+      "real_update_share": 0.767351986396661,
+      "saturated_share": 0.41567475653114855,
+      "pass_quality_real_update_share": 0.7651049061366146,
+      "pass_quality_saturated_share": 0.42104432875847925,
+      "median_survival": 0.505,
+      "pass_quality_median_survival": 0.51,
+      "median_abs_change": 0.0050000000000000044,
+      "pass_quality_median_abs_change": 0.0050000000000000044
+    }
+  ],
+  "informative_summary": [
+    {
+      "event_type_for_trackB": "bucket_distribution",
+      "events": 79,
+      "total_informative_hours": 9280,
+      "median_informative_hours": 125.0,
+      "events_ge_72_informative_hours": 73,
+      "events_ge_48_informative_hours": 77,
+      "events_zero_informative_hours": 0,
+      "median_informative_share": 0.8333333333333334,
+      "median_event_survival": 0.490674318507891,
+      "median_event_abs_change": 0.01259661204566509
+    },
+    {
+      "event_type_for_trackB": "point_threshold",
+      "events": 45,
+      "total_informative_hours": 3129,
+      "median_informative_hours": 78.0,
+      "events_ge_72_informative_hours": 25,
+      "events_ge_48_informative_hours": 28,
+      "events_zero_informative_hours": 4,
+      "median_informative_share": 0.5570469798657718,
+      "median_event_survival": 0.5874999999999999,
+      "median_event_abs_change": 0.00825
+    }
+  ],
+  "known_caveats": [
+    "Polymarket prices-history is sampled; has_real_update is a price-change proxy, not order-book message activity.",
+    "Bucket survival uses normalized probabilities and therefore inherits the partition-sum quality gate.",
+    "Point-threshold survival has no partition-sum gate and is highly saturation-prone; point-threshold events should not be in the primary lead-lag sample unless explicitly promoted after Deribit-side coverage checks.",
+    "trackB_pm_informative_candidate is pass_quality AND real_update AND non-saturated; it is a PM-side eligibility flag, not a final lead-lag sample flag."
+  ]
+}

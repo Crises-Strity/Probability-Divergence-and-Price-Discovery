@@ -1,0 +1,15 @@
+\begin{table}
+\caption{Track A cell-level divergence diagnostics.}
+\label{tab:trackA_cell_divergence}
+\begin{tabular}{llrrrrrrrrrr}
+\toprule
+cell\_type & moneyness\_bucket & rows & event\_days & mean\_abs\_normalized\_divergence & median\_abs\_normalized\_divergence & mean\_signed\_normalized\_divergence & mean\_relative\_abs\_divergence & median\_relative\_abs\_divergence & mean\_log\_odds\_divergence & pm\_probability\_mean & deribit\_probability\_mean \\
+\midrule
+bucket & above\_1.05 & 744 & 255 & 0.0207 & 0.0153 & 0.0014 & 0.7286 & 0.4901 & 2.3761 & 0.0509 & 0.0495 \\
+bucket & below\_0.95 & 717 & 249 & 0.0197 & 0.0141 & -0.0058 & 0.7933 & 0.4385 & 1.8385 & 0.0493 & 0.0551 \\
+bucket & near\_0.95\_1.05 & 1065 & 293 & 0.0371 & 0.0248 & 0.0011 & 0.3049 & 0.1498 & -0.0647 & 0.1790 & 0.1779 \\
+left\_tail & left\_tail & 294 & 294 & 0.0307 & 0.0146 & -0.0040 & 0.9224 & 0.8802 & 3.5232 & 0.0468 & 0.0508 \\
+right\_tail & right\_tail & 294 & 294 & 0.0232 & 0.0136 & 0.0105 & 0.7936 & 0.8236 & 3.5368 & 0.0556 & 0.0451 \\
+\bottomrule
+\end{tabular}
+\end{table}

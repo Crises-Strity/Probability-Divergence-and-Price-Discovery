@@ -1,0 +1,2 @@
+﻿event_days,events,edge_probability_mean,edge_probability_median,edge_probability_p90,edge_probability_p95,edge_probability_p99,edge_probability_max,days_edge_probability_gt_5pct,share_edge_probability_gt_5pct
+294,61,0.004392713945296932,0.0013883074389985776,0.01249164610701638,0.023281089284414094,0.028986626230819976,0.05848869870517042,1,0.003401360544217687
