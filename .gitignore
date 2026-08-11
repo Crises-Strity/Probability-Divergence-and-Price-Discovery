@@ -22,7 +22,6 @@ dist/
 *.zip
 meeting_materials/
 result/
-dissertation/literature_review/*.pdf
 
 # Raw and bulk processed data
 data/raw/
@@ -55,11 +54,6 @@ data/processed/**/*.json
 !data/processed/panels/trackB_lead_lag_panel_metadata.json
 !data/processed/panels/trackB_lead_lag_panel_metadata_6h.json
 !data/processed/panels/trackB_lead_lag_diagnostics_summary.json
-
-# Dissertation handoff workspace
-dissertation/inbox/*
-!dissertation/inbox/.gitkeep
-!dissertation/releases/**/source.zip
 
 # P3 versioned run configuration; bulk P3 outputs remain ignored.
 !data/processed/p3_sol/

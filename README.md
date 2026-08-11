@@ -1,239 +1,197 @@
 # Probability Divergence and Price Discovery
 
-This repository contains the reproducible empirical pipeline and frozen research outputs for a UCL MSc FinTech dissertation project on cross-market probability pricing in crypto markets.
-
-Project title:
+Frozen empirical project for the UCL MSc FinTech dissertation:
 
 ```text
 Probability Divergence and Price Discovery between Polymarket BTC/ETH Price Events and Deribit Crypto Options
 ```
 
-The project compares probabilities implied by Polymarket terminal BTC/ETH price-event markets with probabilities inferred from Deribit crypto option data. The focus is empirical measurement and price discovery, not a standalone trading-strategy claim.
+The repository measures whether Polymarket terminal price-event probabilities
+and Deribit option-implied risk-neutral probabilities price comparable BTC/ETH
+outcomes consistently. It is a reproducible measurement project, not a claim
+of executable arbitrage or a deployable trading strategy.
 
-## Research Objective
+## Project Status
 
-The core question is whether two market venues price similar terminal crypto price outcomes consistently:
+The empirical specification and conclusions are frozen.
 
-```text
-Polymarket event-implied probability
-vs
-Deribit option-implied risk-neutral probability
-```
+| Stage | Purpose | Final status |
+|---|---|---|
+| P0 | API and data feasibility | Complete |
+| P1 | Track A distribution divergence and Track B lead-lag analysis | Complete and empirically frozen |
+| P2 | Robustness, provenance, environment lock, and freeze verification | Complete |
+| P3 | SOL Track A feasibility extension | `FAIL` -- stopped before estimator construction |
 
-The comparison is intentionally conservative. A raw difference between the two markets is not treated as pure arbitrage or pure mispricing, because the two probability measures are conceptually different and the data are subject to liquidity, settlement, and timing frictions.
+P3 confirmed that SOL instruments and contract-unit adaptation were
+technically accessible, but a mechanically selected three-expiry OHLC smoke
+probe produced zero event-days passing the frozen P1 cross-strike quality
+gates. The project therefore stopped rather than relax filters after observing
+liquidity or construct an RND from sparse strike updates.
 
-## Project Design
+## Frozen Conclusions
 
-The empirical design is organized around two tracks.
+### Track A: distribution divergence
 
-### Track A: Probability Divergence
+The final sample contains 294 event-days across 61 events and 3,114 cell-day
+rows.
 
-Track A compares full event probability distributions at a lower frequency.
+- Distribution centers align: the location-difference intercept is `0.000572`
+  with `p = 0.801546`.
+- Under the baseline RND smoothing weight (`0.10`), the median Polymarket minus
+  Deribit spread difference is `0.004022`, and Polymarket is wider on
+  `0.707483` of event-days.
+- The width result is smoothing-conditional. At smoothing weight `0.20`, the
+  common-sample median spread difference falls to `0.000843` and the
+  Polymarket-wider share to `0.525597`.
+- Mean relative absolute divergence is larger in tails than in body cells:
+  `0.857979` versus `0.570604`.
 
-Main idea:
+The defensible Track A conclusion is center alignment with material relative
+tail divergence. A consistently wider Polymarket distribution is not a
+sign-invariant result.
 
-- reconstruct Polymarket terminal price-event probability buckets;
-- infer Deribit option-implied risk-neutral probabilities from option OHLC data;
-- compare matched event-day distributions across BTC and ETH;
-- document where divergence is larger, especially by tail/body cell, time to expiry, liquidity, and matching quality.
+### Track B: integration and price discovery
 
-This track answers:
+At six-hour frequency, the frozen sample contains 1,121 jointly informative
+rows and 703 regression rows. Level correlation is `0.911992`, while the
+contemporaneous change correlation is `0.534829`.
 
-```text
-How different are the two markets' implied probability distributions?
-```
+Cross-market integration and contemporaneous co-movement are supported.
+Directional leadership is not identified: the Deribit OHLC change series
+remains noisier and negatively autocorrelated, symmetric lead correlations are
+small, and sub-six-hour lead-lag is not measurable with the available
+liquidity.
 
-### Track B: Price Discovery / Lead-Lag
+The paper-facing source of truth is
+[`docs/decision_logs/P1_PAPER_CONCLUSIONS.md`](docs/decision_logs/P1_PAPER_CONCLUSIONS.md).
+The frozen interpretation and P3 stop decision are recorded in
+[`docs/decision_logs/P1_EMPIRICAL_FREEZE.md`](docs/decision_logs/P1_EMPIRICAL_FREEZE.md)
+and
+[`docs/decision_logs/P3_SOL_FEASIBILITY_DECISION.md`](docs/decision_logs/P3_SOL_FEASIBILITY_DECISION.md).
 
-Track B studies whether one market reacts before the other.
+## Research Design
 
-Main idea:
+Track A reconstructs lower-frequency Polymarket terminal distributions and
+compares them with Deribit risk-neutral distributions inferred from option
+OHLC data. Track B uses local survival probabilities, such as
+`P(S_T > K*)`, to study convergence and lead-lag without repeatedly fitting a
+full high-frequency distribution.
 
-- avoid high-frequency full-distribution reconstruction at the start;
-- use local survival probabilities such as `P(S_T > K*)`;
-- compare changes in Polymarket and Deribit probability series;
-- control for stale prices and non-synchronous trading before interpreting any lead-lag result.
-
-This track answers:
-
-```text
-Which market incorporates information first?
-```
+The comparison is deliberately conservative. Polymarket probabilities and
+Deribit risk-neutral probabilities are different economic objects, and the
+venues also differ in settlement reference, horizon, liquidity, and price
+staleness.
 
 ## Repository Structure
 
 ```text
 .
+├── configs/                 # version-controlled runtime configuration
 ├── data/
-│   ├── raw/                  # raw API snapshots and downloaded market data
-│   └── processed/            # cleaned panels, diagnostics, and metadata
+│   ├── raw/                 # local only; ignored by Git
+│   └── processed/           # compact frozen inputs plus local generated data
 ├── docs/
-│   ├── roadmap/              # topic outline and project roadmap
-│   ├── specs/                # pipeline specifications and implementation notes
-│   └── decision_logs/        # empirical freeze and decision records
+│   ├── roadmap/             # high-level project roadmap
+│   ├── specs/               # P0--P3 pipeline and output specifications
+│   ├── decision_logs/       # empirical freezes and stopping decisions
+│   └── superpowers/         # repository design and implementation records
 ├── paper/
-│   ├── figures/              # final dissertation figures
-│   └── tables/               # final dissertation tables
-├── result/                   # exploratory and intermediate research outputs
+│   ├── figures/             # frozen paper-facing figures
+│   └── tables/              # frozen CSV and LaTeX tables with provenance
+├── result/                  # local exploratory/intermediate outputs; ignored
 ├── scripts/
-│   ├── P0_data_collection/   # API exploration and feasibility scripts
-│   ├── P1_pipeline/          # main empirical pipeline scripts
-│   └── P2_diagnostics/       # robustness, audit, and provenance scripts
-└── tests/                    # regression and diagnostic tests
+│   ├── P0_data_collection/  # API exploration and feasibility
+│   ├── P1_pipeline/         # main empirical pipeline
+│   ├── P2_diagnostics/      # robustness, audit, provenance, freeze checks
+│   └── P3_asset_extension/  # frozen SOL extension feasibility code
+└── tests/                   # regression, manifest, and freeze tests
 ```
 
-Large raw and processed data files should not be committed to Git unless they are deliberately reduced sample files.
+The dissertation is intentionally not embedded in this repository.
 
-## Stage Definitions
+## Stage Summary
 
-### P0: Data Collection and API Feasibility
+### P0: data feasibility
 
-Purpose:
+P0 mapped Polymarket public metadata/history endpoints and Deribit public
+instrument/OHLC endpoints, then documented expiry matching, settlement, and
+historical-liquidity constraints before fixing the empirical design.
 
-- explore Polymarket public APIs;
-- explore Deribit public option APIs;
-- check whether market metadata, historical prices, and option OHLC data are accessible;
-- identify data limitations before committing to an empirical specification.
+### P1: main empirical pipeline
 
-Key scripts:
+P1 builds canonical event cells, Polymarket histories, Deribit option panels,
+Track A distribution diagnostics, and Track B survival/lead-lag panels.
 
-```text
-scripts/P0_data_collection/build_polymarket_inventory.py
-scripts/P0_data_collection/check_deribit_availability.py
-scripts/P0_data_collection/polymarket_event_history_spike.py
-scripts/P0_data_collection/deribit_single_expiry_grid_spike.py
-```
+### P2: engineering and empirical freeze
 
-### P1: Main Empirical Pipeline
+P2 locks Python dependencies, records compact-input hashes and schemas,
+generates table provenance, audits settlement-reference assumptions, and
+strictly verifies frozen row counts and paper outputs.
 
-Purpose:
+### P3: stopped SOL extension
 
-- build canonical event/cell tables;
-- download and process Polymarket history panels;
-- download and process Deribit option OHLC panels;
-- build Track A distribution-divergence diagnostics;
-- build Track B local-survival and lead-lag panels.
+P3 tests whether the frozen Track A design transfers to SOL. It retains the P1
+quality gates and stops before estimator construction because the smoke sample
+has zero passing event-days. The JSON under `configs/` is its executable
+parameter source, not a planning document.
 
-Key script groups:
+## Data and Reproducibility Policy
 
-```text
-scripts/P1_pipeline/build_polymarket_*.py
-scripts/P1_pipeline/build_deribit_*.py
-scripts/P1_pipeline/build_trackA_*.py
-scripts/P1_pipeline/build_trackB_*.py
-```
+Raw API snapshots, bulk panels, and exploratory results are not committed to
+Git. The deliberate exception is a compact processed package of 11 Parquet
+inputs, approximately 2.8 MB in total, required to rebuild the frozen tables
+and figures.
 
-### P2: Diagnostics, Robustness, and Freeze Checks
+[`data/processed/frozen_input_manifest.json`](data/processed/frozen_input_manifest.json)
+records each tracked input's SHA-256 hash, byte size, row count, and ordered
+schema. These files reproduce the frozen empirical outputs; they do not
+reproduce the original API collection step because historical public-market
+responses can change after the snapshot date.
 
-Purpose:
+## Environment and Verification
 
-- audit reference-basis and settlement mismatches;
-- generate table provenance;
-- run robustness checks around the frozen empirical result set;
-- make the result set defensible for dissertation writing.
-
-Key scripts:
-
-```text
-scripts/P2_diagnostics/build_reference_basis_audit.py
-scripts/P2_diagnostics/build_frozen_input_manifest.py
-scripts/P2_diagnostics/build_p1_table_provenance.py
-scripts/P2_diagnostics/run_p1_freeze.py
-scripts/P2_diagnostics/verify_p2_freeze.py
-```
-
-## Data Sources
-
-The current project uses public API exploration around:
-
-- Polymarket Gamma / public-search API for event and market metadata;
-- Polymarket CLOB price-history style endpoints for event price histories;
-- Deribit public option endpoints for option instruments and historical OHLC-style data.
-
-Known data constraints:
-
-- Polymarket and Deribit expiries may not match exactly.
-- Settlement references may differ across venues.
-- Historical Deribit order books for expired options are not straightforwardly available through the tested public endpoints.
-- Option OHLC data may be based on last trades, so cross-strike prices are not guaranteed to be synchronous.
-- Polymarket event prices and Deribit risk-neutral probabilities are related but not identical probability concepts.
-
-## Frozen Empirical Snapshot
-
-The current P2 freeze is generated from the tracked compact inputs and contains:
-
-- Track A: 294 matched event-days across 61 events, with 3,114 comparison-cell rows;
-- Track B: 1,121 jointly informative six-hour rows;
-- Track B lead-lag regressions: 703 rows across 77 events;
-- reference-basis audit: 124 events;
-- paper-facing outputs: 30 CSV tables, matching LaTeX tables, and 8 PDF figures;
-- automated checks: 17 tests plus a strict freeze verifier.
-
-These counts are regression-tested. They describe the frozen sample rather than targets to be achieved by changing filters.
-
-## Environment
-
-The frozen project environment uses Python 3.11 and is locked by `uv.lock`:
+The project uses Python 3.11 with dependencies locked in `uv.lock`.
 
 ```bash
 uv sync --python 3.11
-uv run pytest -q
-```
-
-The empirical scripts must run through this environment so that pandas,
-SciPy, statsmodels, pyarrow, and matplotlib versions remain fixed.
-
-## Running Scripts
-
-Use the project root as the working directory:
-
-```bash
-cd /path/to/Probability-Divergence-and-Price-Discovery
-```
-
-Example P0 runs:
-
-```bash
-uv run python scripts/P0_data_collection/build_polymarket_inventory.py
-uv run python scripts/P0_data_collection/check_deribit_availability.py
-uv run python scripts/P0_data_collection/polymarket_event_history_spike.py
-uv run python scripts/P0_data_collection/deribit_single_expiry_grid_spike.py
-```
-
-Some scripts call external market APIs and can take time. Run them deliberately, keep metadata outputs, and record the data snapshot date.
-
-Rebuild the frozen paper-facing outputs from the tracked compact inputs with:
-
-```bash
 uv run python scripts/P2_diagnostics/run_p1_freeze.py --include-track-b
 uv run python scripts/P2_diagnostics/verify_p2_freeze.py
 uv run pytest -q
 ```
 
-The freeze runner regenerates Track A and Track B diagnostics, the reference-basis audit, final tables and figures, and table-level provenance. The verifier rejects missing outputs, obsolete script paths, incorrect row counts, and unexpected changes to the frozen sample.
+The freeze runner regenerates the paper-facing diagnostics, tables, figures,
+and provenance from the tracked compact inputs. The strict verifier rejects
+missing inputs or outputs, changed hashes or schemas, obsolete script paths,
+and unexpected frozen-sample counts.
 
-## Output Policy
+Scripts that call external APIs should be run only for audit or replication,
+with their snapshot date recorded. They are not required for the frozen
+paper-output rebuild.
 
-Expected output locations:
+## Dissertation Workflow
+
+The dissertation has its own repository:
+[UCL-Final-Dissertation](https://github.com/Crises-Strity/UCL-Final-Dissertation).
+
+The source-of-truth flow is:
 
 ```text
-data/raw/                 raw API snapshots and downloaded market data
-data/processed/           cleaned panels and metadata
-result/                   intermediate or exploratory outputs
-paper/figures/            final dissertation figures
-paper/tables/             final dissertation tables
+Overleaf -> dedicated GitHub repository -> standalone local clone
 ```
 
-Research-output discipline:
+Normal writing and compilation happen in Overleaf. Completed checkpoints are
+pushed from Overleaf to the dedicated GitHub repository, then pulled into the
+standalone local dissertation clone for local inspection. This empirical
+project repository neither vendors nor tracks the manuscript.
 
-- do not fabricate empirical results;
-- keep raw data and large generated files out of Git;
-- save metadata with generated datasets;
-- distinguish exploratory diagnostics from frozen dissertation outputs;
-- avoid interpreting probability divergence as arbitrage unless trading costs, timing, and execution constraints are explicitly handled.
+## Interpretation Boundaries
 
-## Current Status
-
-P0 data feasibility, the P1 empirical pipeline, and the P2 engineering freeze are complete for the current BTC/ETH specification. The repository now includes a Python 3.11 lockfile, compact reproducibility inputs, table-level provenance, frozen-output regression tests, a reference-basis audit, and one-command regeneration of the paper-facing results.
-
-The frozen results should still be interpreted conservatively. Cross-venue probability differences are not direct arbitrage estimates, clustered p-values do not establish causal price discovery, and settlement-reference mismatches and non-synchronous option OHLC observations remain material limitations.
+- Probability differences are not direct arbitrage estimates.
+- The spread sign is conditional on RND smoothing.
+- Gap coefficients are composition controls, not causal maturity effects.
+- Clustered regression significance does not identify a price-discovery
+  leader when measurement error is asymmetric.
+- Settlement-reference mismatch, non-synchronous option OHLC observations,
+  and liquidity remain material limitations.
+- P3 is a documented feasibility failure, not evidence that SOL markets or
+  instruments do not exist.
