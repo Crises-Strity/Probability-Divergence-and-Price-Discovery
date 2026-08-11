@@ -1,0 +1,40 @@
+{
+  "asset": "SOL",
+  "verification_status": "verified_for_feasibility",
+  "verified_at_utc": "2026-08-03T16:47:14Z",
+  "instrument_family": "SOL_USDC linear European options",
+  "instrument_name_pattern": "SOL_USDC-DDMMMYY-STRIKE-SIDE",
+  "base_currency": "SOL",
+  "quote_currency": "USDC",
+  "settlement_currency": "USDC",
+  "price_index": "sol_usdc",
+  "contract_multiplier": 10,
+  "quoted_option_price_basis": "USDC per 1 SOL",
+  "premium_per_contract": "quoted_option_price * 10",
+  "call_payoff_per_sol": "max(settlement_price - strike, 0) USDC",
+  "put_payoff_per_sol": "max(strike - settlement_price, 0) USDC",
+  "payoff_per_contract": "payoff_per_sol * 10",
+  "put_call_parity_per_sol": "call_price - put_price = forward_price - strike, subject to matched timestamp and the documented linear-option convention",
+  "expiry_time": "08:00 UTC",
+  "settlement_price_method": "30-minute TWAP of the Deribit SOL_USDC index leading into expiry",
+  "historical_settlement_note": "From early April 2026, ITM linear options first settle into the matching future and that future cash-settles in USDC; Deribit states that settlement currency and economic payoff are unchanged.",
+  "api_observation": {
+    "instrument_name": "SOL_USDC-10OCT25-230-C",
+    "state": "archivized",
+    "instrument_type": "linear",
+    "contract_size": 10,
+    "expiration_timestamp": 1760083200000,
+    "quote_currency": "USDC",
+    "settlement_currency": "USDC",
+    "price_index": "sol_usdc"
+  },
+  "official_sources": [
+    "https://support.deribit.com/hc/en-us/articles/31424932728093-Linear-USDC-Options",
+    "https://support.deribit.com/hc/en-us/articles/25944688876957-Contract-Introduction-Policy",
+    "https://docs.deribit.com/api-reference/market-data/public-get_instruments",
+    "https://docs.deribit.com/api-reference/market-data/public-get_instrument",
+    "https://docs.deribit.com/api-reference/upcoming/market-data/public-get_tradingview_chart_data"
+  ],
+  "estimator_authorization": false,
+  "remaining_requirement": "Derive and freeze a common-unit fit tolerance, then validate full cross-strike historical coverage before estimating SOL probabilities."
+}

@@ -1,0 +1,26 @@
+{
+  "data_snapshot_utc": "2026-08-03T17:23:05.057530+00:00",
+  "source_endpoint": "https://gamma-api.polymarket.com/public-search",
+  "request": {
+    "search_terms": [
+      "solana",
+      "sol price",
+      "solana price",
+      "what price will solana be"
+    ],
+    "max_pages_per_term": 2,
+    "limit_per_type": 100
+  },
+  "row_counts": {
+    "raw_pages": 6,
+    "discovered_events": 120,
+    "candidate_events": 44,
+    "candidate_expiries": 44,
+    "cell_rows": 496
+  },
+  "classification_status": "automated_pending_manual_review",
+  "outputs": {
+    "event_inventory": "data/processed/p3_sol/polymarket_event_inventory.parquet",
+    "event_cells": "data/processed/p3_sol/polymarket_event_cells.parquet"
+  }
+}
